@@ -1,0 +1,40 @@
+.number-form {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: center;
+  margin: 1em;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.difficulty-row {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  gap: 5em;
+  width: 60%;
+}
+
+.grid-size-row {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  gap: 5em;
+  width: 60%;
+}
+
+.start-button {
+  padding: 1em;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.start-button:active {
+  background-color: grey;
+}

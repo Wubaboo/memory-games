@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Header from "./components/header";
+import Numbers from "./numbersGame/numbersHome";
 function App() {
+  const routes = [
+    { label: "Home", path: "/" },
+    { label: "Numbers", path: "/numbers/" },
+    { label: "Matching", path: "/matching/" },
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header routes={routes}></Header>
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+          <Route path="/numbers/" element={<Numbers />} />
+          <Route path="/matching/" element={<div>Matching</div>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,27 @@
+.header > * {
+  color: white;
+  line-height: 10px;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 2em 2em;
+  gap: 3em;
+  background-color: rgb(34, 19, 19);
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.links > * {
+  color: white;
+  line-height: 10px;
+  text-decoration: none;
+}
