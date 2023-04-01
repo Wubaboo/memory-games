@@ -27,20 +27,35 @@ export default function NumberGameHome() {
     setNumbers(getNewGrid());
   }
 
+  function handleStartGame() {
+    updateGrid();
+    setStartGame(!startGame);
+  }
+
   useEffect(() => {
     updateGrid();
   }, [gridSize, difficulty]);
 
   return (
     <div className="number-game-container">
-      <NumberSettings
-        setStartGame={setStartGame}
-        setDifficulty={setDifficulty}
-        setGridSize={setGridSize}
-        gridSize={gridSize}
-        difficulty={difficulty}
-      ></NumberSettings>
-      <NumberGame grid={numbers} gridSize={gridSize} difficulty={difficulty}></NumberGame>
+      <h1 style={{ margin: "1em 0em" }}>Number Game</h1>
+      {!startGame && (
+        <NumberSettings
+          handleStartGame={handleStartGame}
+          setDifficulty={setDifficulty}
+          setGridSize={setGridSize}
+          gridSize={gridSize}
+          difficulty={difficulty}
+        ></NumberSettings>
+      )}
+      {startGame && (
+        <NumberGame
+          grid={numbers}
+          gridSize={gridSize}
+          difficulty={difficulty}
+          setStartGame={setStartGame}
+        ></NumberGame>
+      )}
     </div>
   );
 }

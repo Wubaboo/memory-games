@@ -4,7 +4,7 @@ import Header from "./components/header";
 import Numbers from "./numbersGame/numbersHome";
 function App() {
   const routes = [
-    { label: "Home", path: "/" },
+    // { label: "Home", path: "/" },
     { label: "Numbers", path: "/numbers/" },
     { label: "Matching", path: "/matching/" },
   ];

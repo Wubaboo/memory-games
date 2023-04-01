@@ -1,6 +1,6 @@
 import { Slider } from "@mui/material";
 export default function NumberSettings(props) {
-  const { gridSize, difficulty, setGridSize, setDifficulty, setStartGame } =
+  const { gridSize, difficulty, setGridSize, setDifficulty, handleStartGame } =
     props;
 
   function getMarks(min, max) {
@@ -19,6 +19,10 @@ export default function NumberSettings(props) {
   }
   return (
     <div className="settings">
+      <p>
+        Remember the numbers and their positions. Click on the boxes in
+        increasing order.
+      </p>
       <div className="difficulty-row">
         <p>Difficulty</p>
         <Slider
@@ -47,7 +51,7 @@ export default function NumberSettings(props) {
           onChange={handleGridSize}
         ></Slider>
       </div>
-      <button className="start-button" onClick={setStartGame(true)}>
+      <button className="start-button" onClick={handleStartGame}>
         Start
       </button>
     </div>

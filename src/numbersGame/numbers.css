@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 75%
+  width: 75%;
 }
 
 .difficulty-row {
@@ -58,8 +58,8 @@
   align-items: center;
   text-align: center;
   font-size: larger;
-  transition: background-color 1s;
-  margin: auto; 
+  transition: background-color 0.5s;
+  margin: auto;
   border-radius: 16px;
   user-select: none;
   cursor: pointer;
@@ -79,7 +79,6 @@
   animation-duration: 0.3s;
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
-
 }
 
 @keyframes flash-red {
@@ -89,4 +88,13 @@
   to {
     background-color: red;
   }
+}
+
+.new-game-button {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: rgb(33, 33, 33);
+  color: white;
 }
