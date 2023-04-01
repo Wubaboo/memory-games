@@ -11,8 +11,11 @@ export default function NumberGame(props) {
   const gameStyling = {
     gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
     display: "grid",
-    gap: "2em",
-    width: `${6 * gridSize}em`,
+    gap: "1em",
+    rowGap: "1em",
+    columnGap: "1em",
+    width: `${4.5 * gridSize}em`,
+    height: `${4.5 * gridSize}em`,
   };
 
   function handleNewGame() {

@@ -1,11 +1,3 @@
-.number-form {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-  justify-content: center;
-  margin: 1em;
-}
-
 .settings {
   display: flex;
   flex-direction: column;
