@@ -33,8 +33,10 @@
   padding: 1em;
   border-radius: 16px;
   cursor: pointer;
+  background-color: rgb(33, 33, 33);
+  color: white;
 }
 
 .start-button:active {
-  background-color: grey;
+  background-color: rgb(68, 68, 68);
 }

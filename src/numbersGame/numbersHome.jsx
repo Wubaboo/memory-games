@@ -30,10 +30,11 @@ export default function NumberGameHome() {
   return (
     <div className="number-game-container">
       <NumberSettings
+        setPlaying={setPlaying}
         setDifficulty={setDifficulty}
         setGridSize={setGridSize}
         gridSize={gridSize}
-        setPlaying={setPlaying}
+        difficulty={difficulty}
       ></NumberSettings>
       <NumberGame grid={numbers} gridSize={gridSize}></NumberGame>
     </div>

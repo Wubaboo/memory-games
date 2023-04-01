@@ -1,6 +1,7 @@
 import { Slider } from "@mui/material";
 export default function NumberSettings(props) {
-  const { gridSize, setGridSize, setDifficulty, setPlaying } = props;
+  const { gridSize, difficulty, setGridSize, setDifficulty, setPlaying } =
+    props;
 
   function getMarks(min, max) {
     let marks = [];
@@ -10,6 +11,12 @@ export default function NumberSettings(props) {
     return marks;
   }
 
+  function handleGridSize(e) {
+    if (difficulty > e.target.value * e.target.value) {
+      setDifficulty(5);
+    }
+    setGridSize(e.target.value);
+  }
   return (
     <div className="settings">
       <div className="difficulty-row">
@@ -37,7 +44,7 @@ export default function NumberSettings(props) {
           marks={getMarks(3, 10)}
           steps={null}
           valueLabelDisplay="auto"
-          onChange={(e) => setGridSize(e.target.value)}
+          onChange={handleGridSize}
         ></Slider>
       </div>
       <button className="start-button" onClick={setPlaying(true)}>
