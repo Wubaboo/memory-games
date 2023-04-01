@@ -11,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 75%
 }
 
 .difficulty-row {
@@ -18,7 +19,7 @@
   align-items: center;
   padding: 2em;
   gap: 5em;
-  width: 60%;
+  width: 100%;
 }
 
 .grid-size-row {
@@ -26,7 +27,7 @@
   align-items: center;
   padding: 2em;
   gap: 5em;
-  width: 60%;
+  width: 100%;
 }
 
 .start-button {
@@ -39,4 +40,32 @@
 
 .start-button:active {
   background-color: rgb(68, 68, 68);
+}
+
+.number-game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.grid-cell {
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: larger;
+  transition: background-color 1s;
+  margin: auto; 
+  border-radius: 16px;
+}
+
+.hidden {
+  background-color: black;
+  color: black;
+  user-select: none;
+  cursor: pointer;
 }
