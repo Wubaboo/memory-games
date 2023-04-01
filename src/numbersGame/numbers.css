@@ -61,11 +61,32 @@
   transition: background-color 1s;
   margin: auto; 
   border-radius: 16px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .hidden {
   background-color: black;
   color: black;
-  user-select: none;
-  cursor: pointer;
+}
+
+.win-cell {
+  background-color: green;
+  transition: background-color 0.5s;
+}
+.wrong-cell {
+  animation-name: flash-red;
+  animation-duration: 0.3s;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes flash-red {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: red;
+  }
 }

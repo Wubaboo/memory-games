@@ -1,6 +1,6 @@
 import { Slider } from "@mui/material";
 export default function NumberSettings(props) {
-  const { gridSize, difficulty, setGridSize, setDifficulty, setPlaying } =
+  const { gridSize, difficulty, setGridSize, setDifficulty, setStartGame } =
     props;
 
   function getMarks(min, max) {
@@ -47,7 +47,7 @@ export default function NumberSettings(props) {
           onChange={handleGridSize}
         ></Slider>
       </div>
-      <button className="start-button" onClick={setPlaying(true)}>
+      <button className="start-button" onClick={setStartGame(true)}>
         Start
       </button>
     </div>

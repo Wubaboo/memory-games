@@ -7,7 +7,7 @@ export default function NumberGameHome() {
   const [numbers, setNumbers] = useState([]);
   const [difficulty, setDifficulty] = useState(5);
   const [gridSize, setGridSize] = useState(5);
-  const [playing, setPlaying] = useState(false);
+  const [startGame, setStartGame] = useState(false);
 
   // Create a new grid
   function getNewGrid() {
@@ -23,20 +23,24 @@ export default function NumberGameHome() {
     return newArr;
   }
 
-  useEffect(() => {
+  function updateGrid() {
     setNumbers(getNewGrid());
+  }
+
+  useEffect(() => {
+    updateGrid();
   }, [gridSize, difficulty]);
 
   return (
     <div className="number-game-container">
       <NumberSettings
-        setPlaying={setPlaying}
+        setStartGame={setStartGame}
         setDifficulty={setDifficulty}
         setGridSize={setGridSize}
         gridSize={gridSize}
         difficulty={difficulty}
       ></NumberSettings>
-      <NumberGame grid={numbers} gridSize={gridSize}></NumberGame>
+      <NumberGame grid={numbers} gridSize={gridSize} difficulty={difficulty}></NumberGame>
     </div>
   );
 }
