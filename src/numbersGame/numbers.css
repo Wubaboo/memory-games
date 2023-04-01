@@ -55,6 +55,7 @@
   border-radius: 16px;
   user-select: none;
   cursor: pointer;
+  border: 1px solid black;
 }
 
 .hidden {
