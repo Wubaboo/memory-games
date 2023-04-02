@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 export default function NumberCell(props) {
   const {
     value,
-    reset,
-    handleNewGame,
     nextValue,
     setNextValue,
     playing,
@@ -21,11 +19,11 @@ export default function NumberCell(props) {
       classes.push("win-cell");
     } else if (win === false) {
       classes.push("wrong-cell");
-    } else if ((reset && value === 0) || (playing && value >= nextValue))
+    } else if (value === 0 || (playing && value >= nextValue))
       classes.push("hidden");
     if (value !== 0) classes.push("value-cell");
     setClasses(classes);
-  }, [reset, playing, win, value]);
+  }, [playing, win, value]);
 
   function handleClick() {
     if (win !== undefined) {

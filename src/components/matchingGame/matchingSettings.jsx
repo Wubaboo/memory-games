@@ -15,7 +15,7 @@ export default function MatchingSettings(props) {
         <Slider
           className="grid-size-slider"
           aria-label="Grid Size"
-          defaultValue={gridSize}
+          value={gridSize}
           min={12}
           max={40}
           marks={getSliderMarks(12, 40, 4)}

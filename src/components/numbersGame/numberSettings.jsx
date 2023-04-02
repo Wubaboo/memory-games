@@ -21,7 +21,7 @@ export default function NumberSettings(props) {
         <Slider
           aria-label="Difficulty"
           className="difficulty-slider"
-          defaultValue={difficulty}
+          value={difficulty}
           min={3}
           max={Math.min(gridSize * gridSize, 25)}
           marks={getSliderMarks(3, 25, 1)}
@@ -35,7 +35,7 @@ export default function NumberSettings(props) {
         <Slider
           className="grid-size-slider"
           aria-label="Grid Size"
-          defaultValue={gridSize}
+          value={gridSize}
           min={3}
           max={10}
           marks={getSliderMarks(3, 10, 1)}

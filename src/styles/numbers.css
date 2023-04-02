@@ -43,13 +43,13 @@
 }
 
 .grid-cell {
-  width: 3em;
-  height: 3em;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: large;
+  font-size: 24px;
   transition: background-color 0.5s;
   margin: auto;
   border-radius: 16px;
@@ -87,7 +87,7 @@
 }
 
 .new-game-button {
-  margin: 1em;
+  margin: 2em;
   padding: 1em;
   border-radius: 16px;
   cursor: pointer;

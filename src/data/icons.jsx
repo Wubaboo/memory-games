@@ -4,12 +4,12 @@ const icons = [
     name: "car",
   },
   {
-    faclasses: ["fa-regular", "fa-truck"],
+    faclasses: ["fa-solid", "fa-truck"],
     name: "truck",
   },
   {
-    faclasses: ["fa-regular", "fa-plane"],
-    name: "plane",
+    faclasses: ["fa-regular", "fa-paper-plane"],
+    name: "paper-plane",
   },
   {
     faclasses: ["fa-regular", "fa-star"],
@@ -80,3 +80,5 @@ const icons = [
     name: "cube",
   },
 ];
+
+export default icons;

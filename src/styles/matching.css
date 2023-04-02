@@ -5,3 +5,34 @@
   align-items: center;
   width: 100%;
 }
+
+.matching-card {
+  border: 2px solid black;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.card-front {
+  font-size: 4rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.card-back {
+  border: 2px solid black;
+  width: 6rem;
+  height: 6rem;
+}
+
+.matching-game-grid {
+  margin: 0 0 2rem 0;
+}
+
+.matching-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

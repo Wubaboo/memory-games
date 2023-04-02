@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
-// import NumberGame from "./numberGame";
+import MatchingGame from "./matchingGame";
 import MatchingSettings from "./matchingSettings";
-import { getCells, shuffleArray } from "../../utils/gridUtils";
+import {
+  getCells,
+  shuffleArray,
+  getDimensions,
+  getRandomColor,
+} from "../../utils/gridUtils";
 import ICONS from "../../data/icons";
 import "../../styles/matching.css";
 
-export default function NumberGameHome() {
+export default function MatchingGameHome() {
   const [grid, setGrid] = useState([]);
   const [gridSize, setGridSize] = useState(4);
+  const [dims, setDims] = useState([2, 2]);
   const [startGame, setStartGame] = useState(false);
 
   // Create a new `size` * `size` grid with pairs of icons filled in random cells
   function getNewGrid(size) {
-    const shuffled = getCells(size);
+    const [rows, cols] = getDimensions(size);
+    setDims([rows, cols]);
+    const shuffled = getCells(rows, cols);
     const icons = shuffleArray(ICONS);
-    let newArr = new Array(size).fill(0);
-    for (let i = 0; i < size; i++) {
-      newArr[i] = new Array(size).fill(0);
+    let newArr = new Array(rows).fill(0);
+    for (let i = 0; i < rows; i++) {
+      newArr[i] = new Array(cols).fill(0);
     }
-    for (let i = 0; i < size * size; i += 2) {
+    for (let i = 0; i < size; i += 2) {
+      icons[Math.floor(i / 2)].color = getRandomColor();
       const [x, y] = shuffled[i];
       newArr[x][y] = icons[Math.floor(i / 2)];
       const [x2, y2] = shuffled[i + 1];
@@ -50,13 +59,14 @@ export default function NumberGameHome() {
           gridSize={gridSize}
         ></MatchingSettings>
       )}
-      {/* {startGame && (
-        <NumberGame
-          grid={numbers}
+      {startGame && (
+        <MatchingGame
+          grid={grid}
           gridSize={gridSize}
           setStartGame={setStartGame}
-        ></NumberGame>
-      )} */}
+          dims={dims}
+        ></MatchingGame>
+      )}
     </div>
   );
 }

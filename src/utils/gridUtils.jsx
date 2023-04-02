@@ -10,10 +10,10 @@ function shuffleArray(arr) {
 }
 
 // create an array of cell coordinates of a size * size grid and shuffle the order
-function getCells(size) {
+function getCells(rows, cols) {
   const cells = [];
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       cells.push([i, j]);
     }
   }
@@ -22,4 +22,15 @@ function getCells(size) {
   return cells;
 }
 
-export { getCells, shuffleArray };
+// Given a number of cells, get a number of rows and columns that are closest together
+// e.g. given 24, we want to return 6 and 4 (not 8 and 3)
+function getDimensions(numCells) {
+  let x = Math.floor(Math.sqrt(numCells));
+  while (numCells % x !== 0) x--;
+  return [x, Math.floor(numCells / x)];
+}
+
+function getRandomColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+export { getCells, shuffleArray, getDimensions, getRandomColor };

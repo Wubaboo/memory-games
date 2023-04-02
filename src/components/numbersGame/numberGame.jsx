@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NumberCell from "./numberCell";
 
 export default function NumberGame(props) {
-  const [reset, setReset] = useState(true);
   const [nextValue, setNextValue] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [win, setWin] = useState(undefined);
@@ -11,16 +10,15 @@ export default function NumberGame(props) {
   const gameStyling = {
     gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
     display: "grid",
-    gap: "1em",
-    rowGap: "1em",
-    columnGap: "1em",
-    width: `${4.5 * gridSize}em`,
-    height: `${4.5 * gridSize}em`,
+    gridGap: "1.5em",
+    // rowGap: "1.5em",
+    // columnGap: "1.5em",
+    // width: `${4.5 * gridSize}em`,
+    // height: `${4.5 * gridSize}em`,
   };
 
   function handleNewGame() {
     setStartGame(false);
-    setReset(true);
     setWin(undefined);
     setPlaying(false);
     setNextValue(1);
@@ -34,8 +32,6 @@ export default function NumberGame(props) {
             <NumberCell
               key={i + j}
               value={cell}
-              reset={reset}
-              handleNewGame={handleNewGame}
               nextValue={nextValue}
               setNextValue={setNextValue}
               playing={playing}

@@ -12,7 +12,7 @@ export default function NumberGameHome() {
 
   // Create a new `size` * `size` grid with `difficulty` numbers filled in random cells
   function getNewGrid(size) {
-    const shuffled = getCells(size);
+    const shuffled = getCells(size, size);
     let newArr = new Array(size).fill(0);
     for (let i = 0; i < size; i++) {
       newArr[i] = new Array(size).fill(0);
