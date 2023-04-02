@@ -9,7 +9,7 @@ export default function MatchingSettings(props) {
 
   return (
     <div className="settings">
-      <p>Remember the image positions and match them.</p>
+      <p>Remember and match the pairs of images.</p>
       <div className="grid-size-row">
         <p>Grid Size</p>
         <Slider
