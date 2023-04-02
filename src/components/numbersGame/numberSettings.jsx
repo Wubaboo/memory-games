@@ -1,15 +1,8 @@
 import { Slider } from "@mui/material";
+import { getSliderMarks } from "../../utils/settingsUtils";
 export default function NumberSettings(props) {
   const { gridSize, difficulty, setGridSize, setDifficulty, handleStartGame } =
     props;
-
-  function getMarks(min, max) {
-    let marks = [];
-    for (let i = 3; i < 25; i++) {
-      marks.push({ value: i, label: i });
-    }
-    return marks;
-  }
 
   function handleGridSize(e) {
     if (difficulty > e.target.value * e.target.value) {
@@ -31,7 +24,7 @@ export default function NumberSettings(props) {
           defaultValue={difficulty}
           min={3}
           max={Math.min(gridSize * gridSize, 25)}
-          marks={getMarks(3, 25)}
+          marks={getSliderMarks(3, 25, 1)}
           steps={null}
           valueLabelDisplay="auto"
           onChange={(e) => setDifficulty(e.target.value)}
@@ -45,7 +38,7 @@ export default function NumberSettings(props) {
           defaultValue={gridSize}
           min={3}
           max={10}
-          marks={getMarks(3, 10)}
+          marks={getSliderMarks(3, 10, 1)}
           steps={null}
           valueLabelDisplay="auto"
           onChange={handleGridSize}

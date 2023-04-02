@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import NumberGame from "./numberGame";
 import NumberSettings from "./numberSettings";
-import "./numbers.css";
+import { getCells } from "../../utils/gridUtils";
+import "../../styles/numbers.css";
 
 export default function NumberGameHome() {
   const [numbers, setNumbers] = useState([]);
@@ -9,12 +10,12 @@ export default function NumberGameHome() {
   const [gridSize, setGridSize] = useState(5);
   const [startGame, setStartGame] = useState(false);
 
-  // Create a new grid
-  function getNewGrid() {
-    const shuffled = getCells(gridSize);
-    let newArr = new Array(gridSize).fill(0);
-    for (let i = 0; i < gridSize; i++) {
-      newArr[i] = new Array(gridSize).fill(0);
+  // Create a new `size` * `size` grid with `difficulty` numbers filled in random cells
+  function getNewGrid(size) {
+    const shuffled = getCells(size);
+    let newArr = new Array(size).fill(0);
+    for (let i = 0; i < size; i++) {
+      newArr[i] = new Array(size).fill(0);
     }
     for (let i = 0; i < difficulty; i++) {
       const [x, y] = shuffled[i];
@@ -24,7 +25,7 @@ export default function NumberGameHome() {
   }
 
   function updateGrid() {
-    setNumbers(getNewGrid());
+    setNumbers(getNewGrid(gridSize));
   }
 
   function handleStartGame() {
@@ -58,22 +59,4 @@ export default function NumberGameHome() {
       )}
     </div>
   );
-}
-
-// create an array of cell coordinates and shuffle the order
-function getCells(size) {
-  const cells = [];
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-      cells.push([i, j]);
-    }
-  }
-  // Durstenfeld Shuffle https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-  for (let i = cells.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let temp = cells[i];
-    cells[i] = cells[j];
-    cells[j] = temp;
-  }
-  return cells;
 }

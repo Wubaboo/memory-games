@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/header";
-import Numbers from "./numbersGame/numbersHome";
+import Numbers from "./components/numbersGame/numbersHome";
+import Matching from "./components/matchingGame/matchingHome";
 function App() {
   const routes = [
     // { label: "Home", path: "/" },
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<div>Home</div>} />
           <Route path="/numbers/" element={<Numbers />} />
-          <Route path="/matching/" element={<div>Matching</div>} />
+          <Route path="/matching/" element={<Matching />} />
         </Routes>
       </BrowserRouter>
     </div>
