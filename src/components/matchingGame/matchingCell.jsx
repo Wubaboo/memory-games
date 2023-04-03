@@ -19,6 +19,7 @@ export default function MatchingCell(props) {
         style={{
           color: object.color,
           backgroundColor: win ? "rgb(174, 255, 174)" : null,
+          transition: "background-color 1s",
         }}
         onClick={handleCellClick}
       ></i>

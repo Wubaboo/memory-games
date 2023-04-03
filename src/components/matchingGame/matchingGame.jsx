@@ -88,7 +88,6 @@ export default function MatchingGame(props) {
 
   // called when a cell is clicked
   function handleClick(i) {
-    console.log("clicked", i, guess);
     if (!playing) {
       setPlaying(true);
       flipFaceDown();
@@ -131,7 +130,6 @@ export default function MatchingGame(props) {
       }
     }
   }
-
   return (
     <div className="matching-game">
       <div className="matching-game-grid" style={gridStyling}>
