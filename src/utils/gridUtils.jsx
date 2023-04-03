@@ -1,4 +1,5 @@
 // Shuffle array
+// Durstenfeld Shuffle https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -17,7 +18,7 @@ function getCells(rows, cols) {
       cells.push([i, j]);
     }
   }
-  // Durstenfeld Shuffle https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
   shuffleArray(cells);
   return cells;
 }

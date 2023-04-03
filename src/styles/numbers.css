@@ -65,7 +65,7 @@
 }
 
 .win-cell {
-  background-color: green;
+  background-color: rgb(174, 255, 174);
   border: none;
   transition: background-color 0.5s;
 }
