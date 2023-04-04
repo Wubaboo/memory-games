@@ -15,9 +15,9 @@ function App() {
       <BrowserRouter>
         <Header routes={routes}></Header>
         <Routes>
-          <Route path="/" element={<Home></Home>} />
-          <Route path="/numbers/" element={<Numbers />} />
-          <Route path="/matching/" element={<Matching />} />
+          <Route path="/memory-games/" element={<Home></Home>} />
+          <Route path="/memory-games/numbers/" element={<Numbers />} />
+          <Route path="/memory-games/matching/" element={<Matching />} />
         </Routes>
       </BrowserRouter>
     </div>
