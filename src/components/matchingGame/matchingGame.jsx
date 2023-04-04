@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import MatchingCell from "./matchingCell";
+import Timer from "../timer"
 import {
   shuffleArray,
   getDimensions,
   getRandomColor,
 } from "../../utils/gridUtils";
 import ICONS from "../../data/icons";
-
 export default function MatchingGame(props) {
-  const { gridSize, setStartGame } = props;
+  const { gridSize, setStartGame, showTimer } = props;
   const [win, setWin] = useState(undefined); //if the game is won
   const [grid, setGrid] = useState([]);
   const [playing, setPlaying] = useState(false); //if the game is currently being played
@@ -16,8 +16,8 @@ export default function MatchingGame(props) {
   const [incorrect, setIncorrect] = useState(false);
   const [matchedCards, setMatchedCards] = useState(0);
   const [dims, setDims] = useState([2, 2]);
+  const [mistakes, setMistakes] = useState(0);
   const [wait, setWait] = useState(false);
-
   const gridStyling = {
     gridTemplateColumns: `repeat(${dims[1]}, 1fr)`,
     display: "grid",
@@ -118,6 +118,7 @@ export default function MatchingGame(props) {
         setMatchedCards(matchedCards + 2);
       }
       // guess is incorrect,
+      // set the incorrect state, reset the guess state, update grid, incremenent mistakes
       else {
         setIncorrect(true);
         setGuess(undefined);
@@ -127,6 +128,7 @@ export default function MatchingGame(props) {
           ret[i].hidden = false;
           return ret;
         });
+        setMistakes(mistakes + 1);
       }
     }
   }
@@ -144,10 +146,15 @@ export default function MatchingGame(props) {
           ></MatchingCell>
         ))}
       </div>
+      <Timer paused={win} active={true} visible={win || showTimer}></Timer>
       {win !== undefined ? (
+        <>
+        <div style={{fontSize: '1.5rem'}}>{mistakes > 0 ? `Mistakes: ${mistakes}` : "A Perfect Game!"}</div>
+
         <button className="new-game-button" onClick={handleNewGame}>
           New Game
         </button>
+        </>
       ) : null}
     </div>
   );
