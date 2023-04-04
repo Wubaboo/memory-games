@@ -7,8 +7,8 @@ import Matching from "./components/matchingGame/matchingHome";
 function App() {
   const routes = [
     // { label: "Home", path: "/" },
-    { label: "Numbers", path: "/numbers/" },
-    { label: "Matching", path: "/matching/" },
+    { label: "Numbers", path: "/memory-games/numbers/" },
+    { label: "Matching", path: "/memory-games/matching/" },
   ];
   return (
     <div className="App">

@@ -15,7 +15,7 @@ export default function Header(props) {
   }
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/memory-games/">
         <h1 className="label">Memory Games</h1>
       </Link>
       <button className="links-button" onClick={handleClick}>
