@@ -1,0 +1,7 @@
+.slider-row {
+    display: flex;
+    align-items: center;
+    padding: 2em;
+    gap: 5em;
+    width: 100%;
+  }

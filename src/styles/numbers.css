@@ -14,14 +14,6 @@
   width: 100%;
 }
 
-.grid-size-row {
-  display: flex;
-  align-items: center;
-  padding: 2em;
-  gap: 5em;
-  width: 100%;
-}
-
 .start-button {
   padding: 1em;
   border-radius: 16px;

@@ -33,7 +33,7 @@ export default function NumberCell(props) {
       setClasses(["grid-cell"]);
       setPlaying(true);
     }
-    if (value != nextValue) {
+    if (value !== nextValue) {
       setClasses(["grid-cell", "wrong-cell"]);
       setPlaying(false);
       setWin(false);
