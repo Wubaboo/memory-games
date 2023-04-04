@@ -5,6 +5,8 @@ import Numbers from "./components/numbersGame/numbersHome";
 import Home from "./components/home";
 import Matching from "./components/matchingGame/matchingHome";
 import Mosaic from "./components/mosaic/mosaicHome";
+import Sequence from "./components/sequence/sequenceHome";
+
 function App() {
   const routes = [
     // { label: "Home", path: "/" },
