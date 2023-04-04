@@ -20,6 +20,13 @@ const cards = [
     imagePath: process.env.PUBLIC_URL + "/assets/mosaic.png",
     path: "/mosaic/",
   },
+  {
+    label: "Sequences",
+    alt: "Sequences Game screenshot",
+    caption: "Memorize as many digits as possible",
+    imagePath: process.env.PUBLIC_URL + "/assets/numbers.png",
+    path: "/sequence/",
+  },
 ];
 
 export default cards;
