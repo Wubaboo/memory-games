@@ -6,9 +6,9 @@ import Home from "./components/home"
 import Matching from "./components/matchingGame/matchingHome";
 function App() {
   const routes = [
-    // { label: "Home", path: "/" },
-    { label: "Numbers", path: "/memory-games/numbers/" },
-    { label: "Matching", path: "/memory-games/matching/" },
+    // { label: "Home", path: "/" },  
+    { label: "Numbers", path: "/numbers/" },
+    { label: "Matching", path: "/matching/" },
   ];
   return (
     <div className="App">
@@ -16,8 +16,8 @@ function App() {
         <Header routes={routes}></Header>
         <Routes>
           <Route path="/memory-games/" element={<Home></Home>} />
-          <Route path="/memory-games/numbers/" element={<Numbers />} />
-          <Route path="/memory-games/matching/" element={<Matching />} />
+          <Route path="/numbers/" element={<Numbers />} />
+          <Route path="/matching/" element={<Matching />} />
         </Routes>
       </BrowserRouter>
     </div>
