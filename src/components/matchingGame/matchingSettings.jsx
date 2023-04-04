@@ -1,4 +1,5 @@
 import { Slider } from "@mui/material";
+import CheckBoxForm from "../checkboxForm";
 import { getSliderMarks } from "../../utils/settingsUtils";
 export default function MatchingSettings(props) {
   const { gridSize, setGridSize, handleStartGame, showTimer, setShowTimer } = props;
@@ -24,10 +25,7 @@ export default function MatchingSettings(props) {
           onChange={handleGridSize}
         ></Slider>
       </div>
-      <div className="show-timer-row">
-      <label htmlFor="showTimer">Show Timer?</label>
-      <input id="showTimer" type="checkbox" className="checkbox" checked={showTimer} onChange={e => (setShowTimer(e.target.checked))}></input>
-      </div>
+      <CheckBoxForm isChecked={showTimer} setChecked={setShowTimer} label="Show Timer?"></CheckBoxForm>
       <button className="start-button" onClick={handleStartGame}>
         Start
       </button>

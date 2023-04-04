@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "../styles/timer.css"
 export default function Timer({paused, visible}) {
     const [time, setTime] = useState(0);
     useEffect(()=> {
