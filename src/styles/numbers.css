@@ -43,8 +43,10 @@
 }
 
 .grid-cell {
-  width: 4rem;
-  height: 4rem;
+  width: 5vw;
+  min-width: 2rem;
+  min-height: 2rem;
+  height: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,4 +95,23 @@
   cursor: pointer;
   background-color: rgb(33, 33, 33);
   color: white;
+}
+
+
+@media (max-width: 750px) {
+  .settings {
+    width: 95%
+  }
+  .grid-size-row {
+      flex-direction: column;
+      gap: 0em;
+  }
+  .difficulty-row {
+    flex-direction: column;
+    gap: 0em;
+  }
+
+  .grid-cell {
+    border-radius: 8px;
+  }
 }

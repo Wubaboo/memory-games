@@ -6,6 +6,8 @@ import {
   getDimensions,
   getRandomColor,
 } from "../../utils/gridUtils";
+import {useWindowDimensions, MOBILE_WIDTH} from "../../utils/useWindowDimensions"
+
 import ICONS from "../../data/icons";
 export default function MatchingGame(props) {
   const { gridSize, setStartGame, showTimer } = props;
@@ -15,9 +17,10 @@ export default function MatchingGame(props) {
   const [guess, setGuess] = useState(undefined);
   const [incorrect, setIncorrect] = useState(false);
   const [matchedCards, setMatchedCards] = useState(0);
-  const [dims, setDims] = useState([2, 2]);
+  const [dims, setDims] = useState(getDimensions(gridSize));
   const [mistakes, setMistakes] = useState(0);
   const [wait, setWait] = useState(false);
+  const {width, height} = useWindowDimensions();
   const gridStyling = {
     gridTemplateColumns: `repeat(${dims[1]}, 1fr)`,
     display: "grid",
@@ -70,6 +73,16 @@ export default function MatchingGame(props) {
     }
   }, [incorrect, matchedCards]);
 
+  useEffect(() => {
+    if (width <= MOBILE_WIDTH) {
+      const newDims = [Math.floor(gridSize/4), 4]
+      setDims(newDims)
+    }
+    else {
+      const newDims = getDimensions(gridSize);
+      setDims(newDims)
+    }
+  }, [width])
   // go back to the settings page
   function handleNewGame() {
     setStartGame(false);

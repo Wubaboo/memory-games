@@ -7,21 +7,32 @@
 .header {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   padding: 1em 2em;
-  gap: 3em;
-  background-color: rgb(34, 19, 19);
+  background-color: black;
 }
 
-.links {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-}
-
-.links > * {
-  color: white;
-  line-height: 10px;
+.link {
+  color: black;
+  /* line-height: 10px; */
+  font-size: larger;
   text-decoration: none;
+}
+
+.links-button {
+  box-shadow: none;
+  background-color: black;
+  /* border: 1px solid white; */
+  border: 0;
+  height: 4em;
+  width: 4em;
+  position: relative;
+  cursor: pointer;
+}
+.menu-icon {
+  color: white;
+  cursor: pointer;
+  width: auto;
+  height: auto;
 }

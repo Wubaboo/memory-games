@@ -16,7 +16,7 @@ export default function MatchingGameHome() {
 
   return (
     <div className="matching-game-container">
-      <h1 style={{ margin: "1em 0em" }}>Matching Game</h1>
+      <h1 style={{ margin: "1em 0em" }}>Matching</h1>
       {!startGame && (
         <MatchingSettings
           handleStartGame={handleStartGame}

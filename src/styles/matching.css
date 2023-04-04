@@ -36,3 +36,10 @@
   align-items: center;
   justify-content: center;
 }
+
+
+@media (max-width: 750px) {
+  .cards {
+      grid-template-columns: repeat(1, 1fr);
+  }
+}

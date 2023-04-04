@@ -1,10 +1,11 @@
 import { Slider } from "@mui/material";
 import CheckBoxForm from "../checkboxForm";
 import { getSliderMarks } from "../../utils/settingsUtils";
+import {useWindowDimensions, MOBILE_WIDTH}  from "../../utils/useWindowDimensions"
 export default function NumberSettings(props) {
   const { gridSize, difficulty, setGridSize, setDifficulty, handleStartGame, showTimer, setShowTimer } =
     props;
-
+  const {width, height} = useWindowDimensions();
   function handleGridSize(e) {
     if (difficulty > e.target.value * e.target.value) {
       setDifficulty(5);
@@ -19,14 +20,14 @@ export default function NumberSettings(props) {
         increasing order.
       </p>
       <div className="difficulty-row">
-        <p>Difficulty</p>
+        <p>Difficulty {width <= MOBILE_WIDTH ? <b>{difficulty}</b> : null}</p> 
         <Slider
           aria-label="Difficulty"
           className="difficulty-slider"
           value={difficulty}
           min={3}
           max={Math.min(gridSize * gridSize, 25)}
-          marks={getSliderMarks(3, 25, 1)}
+          marks={width <= MOBILE_WIDTH ? getSliderMarks(3, 25, 2): getSliderMarks(3, 25, 1)}
           steps={null}
           valueLabelDisplay="auto"
           onChange={(e) => setDifficulty(e.target.value)}

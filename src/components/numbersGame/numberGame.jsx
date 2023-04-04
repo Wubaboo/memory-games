@@ -11,7 +11,8 @@ export default function NumberGame(props) {
   const gameStyling = {
     gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
     display: "grid",
-    gridGap: "1.5em",
+    gridGap: "calc(min(2vw, 2rem))",
+    width: "90%",
   };
 
   function handleNewGame() {

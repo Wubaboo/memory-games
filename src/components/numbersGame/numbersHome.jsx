@@ -40,7 +40,7 @@ export default function NumberGameHome() {
 
   return (
     <div className="number-game-container">
-      <h1 style={{ margin: "1em 0em" }}>Number Game</h1>
+      <h1 style={{ margin: "1em 0em" }}>Numbers</h1>
       {!startGame && (
         <NumberSettings
           handleStartGame={handleStartGame}
