@@ -1,7 +1,7 @@
 import { Slider } from "@mui/material";
 import { getSliderMarks } from "../../utils/settingsUtils";
 export default function NumberSettings(props) {
-  const { gridSize, difficulty, setGridSize, setDifficulty, handleStartGame } =
+  const { gridSize, difficulty, setGridSize, setDifficulty, handleStartGame, showTimer, setShowTimer } =
     props;
 
   function handleGridSize(e) {
@@ -10,6 +10,7 @@ export default function NumberSettings(props) {
     }
     setGridSize(e.target.value);
   }
+  
   return (
     <div className="settings">
       <p>
@@ -43,6 +44,10 @@ export default function NumberSettings(props) {
           valueLabelDisplay="auto"
           onChange={handleGridSize}
         ></Slider>
+      </div>
+      <div className="show-timer-row">
+      <label htmlFor="showTimer">Show Timer?</label>
+      <input id="showTimer" type="checkbox" className="checkbox" checked={showTimer} onChange={e => {setShowTimer(e.target.checked)}}></input>
       </div>
       <button className="start-button" onClick={handleStartGame}>
         Start

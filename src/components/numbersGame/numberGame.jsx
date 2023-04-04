@@ -1,20 +1,17 @@
 import { useState } from "react";
 import NumberCell from "./numberCell";
+import Timer from "../timer"
 
 export default function NumberGame(props) {
   const [nextValue, setNextValue] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [win, setWin] = useState(undefined);
-  const { gridSize, grid, difficulty, setStartGame } = props;
+  const { gridSize, grid, difficulty, setStartGame, showTimer} = props;
 
   const gameStyling = {
     gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
     display: "grid",
     gridGap: "1.5em",
-    // rowGap: "1.5em",
-    // columnGap: "1.5em",
-    // width: `${4.5 * gridSize}em`,
-    // height: `${4.5 * gridSize}em`,
   };
 
   function handleNewGame() {
@@ -43,6 +40,9 @@ export default function NumberGame(props) {
           ));
         })}
       </div>
+      <div>
+      </div>
+      <Timer paused={win !== undefined} visible={showTimer}></Timer>
       {win !== undefined ? (
         <button className="new-game-button" onClick={handleNewGame}>
           New Game

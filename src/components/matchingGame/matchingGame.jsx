@@ -146,7 +146,7 @@ export default function MatchingGame(props) {
           ></MatchingCell>
         ))}
       </div>
-      <Timer paused={win} active={true} visible={win || showTimer}></Timer>
+      <Timer paused={win} visible={showTimer}></Timer>
       {win !== undefined ? (
         <>
         <div style={{fontSize: '1.5rem'}}>{mistakes > 0 ? `Mistakes: ${mistakes}` : "A Perfect Game!"}</div>

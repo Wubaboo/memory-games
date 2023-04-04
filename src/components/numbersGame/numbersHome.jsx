@@ -9,6 +9,7 @@ export default function NumberGameHome() {
   const [difficulty, setDifficulty] = useState(5);
   const [gridSize, setGridSize] = useState(5);
   const [startGame, setStartGame] = useState(false);
+  const [showTimer, setShowTimer] = useState(false);
 
   // Create a new `size` * `size` grid with `difficulty` numbers filled in random cells
   function getNewGrid(size) {
@@ -47,14 +48,18 @@ export default function NumberGameHome() {
           setGridSize={setGridSize}
           gridSize={gridSize}
           difficulty={difficulty}
+          showTimer={showTimer}
+          setShowTimer={setShowTimer}
         ></NumberSettings>
       )}
+    
       {startGame && (
         <NumberGame
           grid={numbers}
           gridSize={gridSize}
           difficulty={difficulty}
           setStartGame={setStartGame}
+          showTimer={showTimer}
         ></NumberGame>
       )}
     </div>
