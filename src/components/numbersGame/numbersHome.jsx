@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import NumberGame from "./numberGame";
-import NumberSettings from "./numberSettings";
 import { getCells } from "../../utils/gridUtils";
+import GameSettings from "../gameSettings";
 import "../../styles/numbers.css";
+import {
+  useWindowDimensions,
+  MOBILE_WIDTH,
+} from "../../utils/useWindowDimensions";
 
 export default function NumberGameHome() {
+  const { width, height } = useWindowDimensions();
   const [numbers, setNumbers] = useState([]);
   const [difficulty, setDifficulty] = useState(5);
   const [gridSize, setGridSize] = useState(5);
@@ -38,21 +43,55 @@ export default function NumberGameHome() {
     updateGrid();
   }, [gridSize, difficulty]);
 
+  function handleGridSize(e) {
+    if (difficulty > e.target.value * e.target.value) {
+      setDifficulty(5);
+    }
+    setGridSize(e.target.value);
+  }
+
+  const settings = [
+    {
+      type: "instructions",
+      name: "Instructions",
+      deets: {
+        description:
+          "Remember the numbers and their positions. Click on the boxes in increasing order.",
+      },
+    },
+    {
+      type: "slider",
+      name: `Difficulty${
+        width <= MOBILE_WIDTH ? " " + <b>{difficulty}</b> : null
+      }`,
+      deets: {
+        value: difficulty,
+        min: 3,
+        max: Math.min(gridSize * gridSize, 25),
+        step: width <= MOBILE_WIDTH ? 2 : 1,
+      },
+      onChange: (e) => setDifficulty(e.target.value),
+    },
+    {
+      type: "slider",
+      name: "Grid Size",
+      deets: { value: gridSize, min: 3, max: 10, step: 1 },
+      onChange: handleGridSize,
+    },
+  ];
+
   return (
     <div className="number-game-container">
       <h1 style={{ margin: "1em 0em" }}>Numbers</h1>
       {!startGame && (
-        <NumberSettings
-          handleStartGame={handleStartGame}
-          setDifficulty={setDifficulty}
-          setGridSize={setGridSize}
-          gridSize={gridSize}
-          difficulty={difficulty}
+        <GameSettings
+          objs={settings}
+          handleStart={handleStartGame}
           showTimer={showTimer}
           setShowTimer={setShowTimer}
-        ></NumberSettings>
+        ></GameSettings>
       )}
-    
+
       {startGame && (
         <NumberGame
           grid={numbers}
