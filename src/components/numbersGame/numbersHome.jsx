@@ -61,9 +61,7 @@ export default function NumberGameHome() {
     },
     {
       type: "slider",
-      name: `Difficulty${
-        width <= MOBILE_WIDTH ? " " + <b>{difficulty}</b> : null
-      }`,
+      name: `Difficulty` + (width <= MOBILE_WIDTH ? `: ${difficulty}` : ''),
       deets: {
         value: difficulty,
         min: 3,
