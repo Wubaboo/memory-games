@@ -24,7 +24,7 @@ function App() {
           <Route path="/numbers/" element={<Numbers />} />
           <Route path="/matching/" element={<Matching />} />
           <Route path="/mosaic/" element={<Mosaic />} />
-          <Route path="/sequence/" element={<Numbers />} />
+          <Route path="/sequence/" element={<Sequence />} />
         </Routes>
       </BrowserRouter>
     </div>
