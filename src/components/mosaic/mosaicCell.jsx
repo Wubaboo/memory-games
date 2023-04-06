@@ -37,6 +37,7 @@ export default function MosaicCell({
             : win === false
             ? "3px solid red"
             : null,
+        transition: "background 0.25s",
       }}
       onClick={handleClick}
       onDragOver={handleDrag}
