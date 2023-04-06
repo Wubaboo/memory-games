@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .palette-row > * {
@@ -23,9 +22,9 @@
 
 .mosaic-cell {
   width: 20vw;
-  max-width: 6rem;
+  max-width: 4.5rem;
   height: 20vw;
-  max-height: 6rem;
+  max-height: 4.5rem;
   border: 2px solid black;
   margin: -2px 0 0 -2px;
 }

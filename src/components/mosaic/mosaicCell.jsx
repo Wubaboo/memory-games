@@ -33,11 +33,11 @@ export default function MosaicCell({
         backgroundColor: COLORS[color],
         border:
           win === true
-            ? "3px solid green"
+            ? "2px solid green"
             : win === false
-            ? "3px solid red"
+            ? "2px solid red"
             : null,
-        transition: "background 0.25s",
+        transition: "background 0.25s, border 1s",
       }}
       onClick={handleClick}
       onDragOver={handleDrag}

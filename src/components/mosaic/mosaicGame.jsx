@@ -98,7 +98,7 @@ export default function MosaicGame({
 
       <div
         className="mosaic-boards"
-        style={{ flexDirection: width <= MOBILE_WIDTH ? "column" : "row" }}
+        style={{ flexDirection: width <= height || (gridSize > 24 && dims[1] > dims[0]) ? "column" : "row" }}
       >
         {!playing || win !== undefined ? (
           <div className="target-grid" style={gridStyling}>
@@ -110,10 +110,11 @@ export default function MosaicGame({
                   backgroundColor: COLORS[cell],
                   border:
                     win === true
-                      ? "3px solid green"
+                      ? "2px solid green"
                       : win === false
-                      ? "3px solid red"
+                      ? "2px solid red"
                       : null,
+                  transition: "border 1s"
                 }}
               ></div>
             ))}

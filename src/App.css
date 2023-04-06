@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .new-game-button {
   margin: 1em;
   padding: 1em;
