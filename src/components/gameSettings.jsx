@@ -12,7 +12,7 @@ export default function GameSettings({objs, handleStart, showTimer, setShowTimer
             return (<p key={i}>{deets.description}</p>)
         }
         else if (type === "slider") {
-           return (<div className="slider-row" key={i} style={width <= MOBILE_WIDTH ? {display: 'flex', flexDirection:'column', gap:'1em'} : null}>
+           return (<div className="slider-row" key={i}>
                     <p>{name}</p>
         <Slider
           className="slider"
@@ -29,7 +29,7 @@ export default function GameSettings({objs, handleStart, showTimer, setShowTimer
         }
 
     }
-    return (<div className="settings" style={width <= MOBILE_WIDTH ? {width: '90%'} : null}>
+    return (<div className="settings">
         {objs.map((obj, i )=> renderComponent(obj, i))}
         <CheckBoxForm isChecked={showTimer} setChecked={setShowTimer} label="Show Timer?"></CheckBoxForm>
         <button className="start-button" onClick={handleStart}>

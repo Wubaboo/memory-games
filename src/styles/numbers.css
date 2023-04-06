@@ -73,18 +73,6 @@
 }
 
 @media (max-width: 750px) {
-  .settings {
-    width: 95%;
-  }
-  .grid-size-row {
-    flex-direction: column;
-    gap: 0em;
-  }
-  .difficulty-row {
-    flex-direction: column;
-    gap: 0em;
-  }
-
   .grid-cell {
     border-radius: 8px;
   }

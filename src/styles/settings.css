@@ -13,3 +13,13 @@
   align-items: center;
   width: 75%;
 }
+
+@media (max-width: 750px) {
+  .settings {
+    width: 95%;
+  }
+  .slider-row {
+    flex-direction: column;
+    gap: 0em;
+  }
+}
