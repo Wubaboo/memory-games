@@ -29,7 +29,7 @@ export default function GameSettings({objs, handleStart, showTimer, setShowTimer
         }
 
     }
-    return (<div className="settings">
+    return (<div className="settings" style={width <= MOBILE_WIDTH ? {width: '90%'} : null}>
         {objs.map((obj, i )=> renderComponent(obj, i))}
         <CheckBoxForm isChecked={showTimer} setChecked={setShowTimer} label="Show Timer?"></CheckBoxForm>
         <button className="start-button" onClick={handleStart}>
