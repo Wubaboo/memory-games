@@ -33,7 +33,7 @@ export default function MosaicCell({
         backgroundColor: COLORS[color],
         border:
           win === true
-            ? "2px solid green"
+            ? "2px solid rgb(174, 255, 174)"
             : win === false
             ? "2px solid red"
             : null,

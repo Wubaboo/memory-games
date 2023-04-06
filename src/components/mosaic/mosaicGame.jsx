@@ -110,7 +110,7 @@ export default function MosaicGame({
                   backgroundColor: COLORS[cell],
                   border:
                     win === true
-                      ? "2px solid green"
+                      ? "2px solid rgb(174, 255, 174)"
                       : win === false
                       ? "2px solid red"
                       : null,
