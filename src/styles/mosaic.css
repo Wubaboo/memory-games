@@ -1,0 +1,44 @@
+.mosaic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.palette-row > * {
+  width: 3rem;
+  height: 3rem;
+}
+
+.color-picker {
+  cursor: pointer;
+}
+
+.palette-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mosaic-cell {
+  width: 20vw;
+  max-width: 6rem;
+  height: 20vw;
+  max-height: 6rem;
+  border: 2px solid black;
+  margin: -2px 0 0 -2px;
+}
+
+.mosaic-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mosaic-boards {
+  display: flex;
+  gap: 1rem;
+}

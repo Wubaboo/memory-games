@@ -1,3 +1,21 @@
 .App {
   text-align: center;
 }
+
+.new-game-button {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: rgb(33, 33, 33);
+  color: white;
+}
+
+button {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: rgb(33, 33, 33);
+  color: white;
+}

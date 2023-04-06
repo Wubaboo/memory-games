@@ -1,7 +1,15 @@
 .slider-row {
-    display: flex;
-    align-items: center;
-    padding: 2em;
-    gap: 5em;
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  gap: 5em;
+  width: 100%;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+}

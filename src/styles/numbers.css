@@ -1,11 +1,3 @@
-.settings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 75%;
-}
-
 .difficulty-row {
   display: flex;
   align-items: center;
@@ -80,23 +72,13 @@
   }
 }
 
-.new-game-button {
-  margin: 2em;
-  padding: 1em;
-  border-radius: 16px;
-  cursor: pointer;
-  background-color: rgb(33, 33, 33);
-  color: white;
-}
-
-
 @media (max-width: 750px) {
   .settings {
-    width: 95%
+    width: 95%;
   }
   .grid-size-row {
-      flex-direction: column;
-      gap: 0em;
+    flex-direction: column;
+    gap: 0em;
   }
   .difficulty-row {
     flex-direction: column;
