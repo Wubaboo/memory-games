@@ -2,10 +2,8 @@ import { Slider } from "@mui/material";
 import { getSliderMarks } from "../utils/settingsUtils";
 import CheckBoxForm from "./checkboxForm";
 import "../styles/settings.css"
-import {useWindowDimensions, MOBILE_WIDTH} from "../utils/useWindowDimensions"
 
 export default function GameSettings({objs, handleStart, showTimer, setShowTimer}) {
-  const {width, height} = useWindowDimensions();
     function renderComponent(obj, i) { 
         const {name, type, deets, onChange} = obj;
         if (type === "instructions") {
