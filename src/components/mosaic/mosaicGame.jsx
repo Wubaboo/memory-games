@@ -71,7 +71,7 @@ export default function MosaicGame({
   }
   return (
     <div className="mosaic-game">
-      <div className="palette-row">
+      <div className="palette-row" style={width <= MOBILE_WIDTH && colors >= 6 ? {display: 'grid', gridTemplateColumns: "repeat(5, 1fr)"} : null}>
         <i
           className={
             "fa-solid fa-xl" +
