@@ -1,4 +1,7 @@
-.matching-game-grid {
-	height: '500px';
-	overflow-y:  'scroll';
+.sequence-game-grid {
+        display: flex;
+        margin: 30pt;
+        padding: 20pt;
+        width: 650px;
+        overflow-x: scroll;
 }

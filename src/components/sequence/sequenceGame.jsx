@@ -45,10 +45,11 @@ export default function SequenceGame({
         }}
       />
       {!solving ? (
-        <div className="sequence-game-grid">
-          <SequenceGrid sequence={theSequence} />
+        <div>
+          <SequenceGrid sequence={theSequence} />{" "}
         </div>
       ) : null}
+
       <Timer paused={won} visible={showTimer}></Timer>
       {won !== undefined ? (
         <>
