@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
 import Timer from "../timer";
 import SequenceGrid from "./sequenceGrid";
-
-import {
-  shuffleArray,
-  getDimensions,
-  getRandomColor,
-} from "../../utils/gridUtils";
-import {
-  useWindowDimensions,
-  MOBILE_WIDTH,
-} from "../../utils/useWindowDimensions";
 import Countdown from "react-countdown";
 
-const MILLISECONDS_IN_SECOND = 1000;
+const MILLISECONDS_IN_SECOND = 100;
 
 export default function SequenceGame({
   timeLimit,
   showTimer,
   onNewGame,
-  theSequence,
+  sequence,
 }) {
   const [won, setWon] = useState();
+  const [currentAnswer, setCurrentAnswer] = useState([""]);
+
   // Indicate solving phase (instead of memorizing phase)
   const [solving, setSolving] = useState(false);
 
@@ -37,19 +29,25 @@ export default function SequenceGame({
 
   return (
     <div className="sequence-game">
-      <Countdown
-        date={Date.now() + timeLimit * MILLISECONDS_IN_SECOND}
-        renderer={countdownRenderer}
-        onComplete={() => {
-          setSolving(true);
-        }}
-      />
       {!solving ? (
-        <div>
-          <SequenceGrid sequence={theSequence} />{" "}
-        </div>
-      ) : null}
-
+        <>
+          <div>
+            <SequenceGrid sequence={sequence} />{" "}
+          </div>
+          <Countdown
+            date={Date.now() + timeLimit * MILLISECONDS_IN_SECOND}
+            renderer={countdownRenderer}
+            onComplete={() => {
+              setSolving(true);
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <p>Enter remembered numbers.</p>
+          <SequenceGrid sequence={currentAnswer} acceptInput />
+        </>
+      )}
       <Timer paused={won} visible={showTimer}></Timer>
       {won !== undefined ? (
         <>

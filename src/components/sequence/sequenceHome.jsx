@@ -12,7 +12,10 @@ export default function SeqeunceGameHome() {
   const [timeLimit, setTimeLimit] = useState(MIN_TIME_LIMIT);
   const [startGame, setStartGame] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
-
+  const sequence = Array.from(
+    { length: timeLimit * MAX_DIGITS_PER_SECOND },
+    () => Math.floor(Math.random() * 10)
+  );
   function handleStartGame() {
     setStartGame(!startGame);
   }
@@ -49,10 +52,7 @@ export default function SeqeunceGameHome() {
           onNewGame={() => {
             setStartGame(!startGame);
           }}
-          theSequence={Array.from(
-            { length: timeLimit * MAX_DIGITS_PER_SECOND },
-            () => Math.floor(Math.random() * 10)
-          )}
+          sequence={sequence}
         ></SequenceGame>
       ) : (
         <GameSettings
