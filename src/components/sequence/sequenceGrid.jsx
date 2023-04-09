@@ -14,7 +14,7 @@ class SequenceGrid extends React.Component {
       sequence: this.props.sequence,
       selectedIdx: 0,
       scrollDir: constants.RIGHT_SCROLL,
-      currentCell: React.createRef(),
+      gridRef: React.createRef(),
     };
   }
 
@@ -51,23 +51,27 @@ class SequenceGrid extends React.Component {
           e.keyCode <= constants.KEYCODE_NINE
         ) {
           // Numbers
-          const newAnswer = [
-            ...this.state.sequence.slice(0, -1),
+          var newAnswer;
+          newAnswer = [
+            ...this.state.sequence.slice(0, this.state.selectedIdx),
             e.keyCode - constants.KEYCODE_ZERO,
-            this.state.sequence[this.state.sequence.length - 1],
+            ...(this.state.selectedIdx === this.state.sequence.length - 1
+              ? this.state.sequence.slice(this.state.selectedIdx)
+              : this.state.sequence.slice(this.state.selectedIdx + 1)),
           ];
+
           this.props.setAnswer(newAnswer); // Propagates change up to parent.
           this.setState((state) => ({
             ...state,
             sequence: newAnswer,
-            selectedIdx: Math.min(state.selectedIdx + 1, state.sequence.length),
+            selectedIdx: Math.min(state.selectedIdx + 1, newAnswer.length - 1),
             scrollDir: constants.RIGHT_SCROLL,
           }));
         } else if (e.keyCode == constants.KEYCODE_BACKSPACE) {
           // Backspace
           const newAnswer = [
-            ...this.state.sequence.slice(0, -2),
-            this.state.sequence[this.state.sequence.length - 1],
+            ...this.state.sequence.slice(0, this.state.selectedIdx - 1),
+            ...this.state.sequence.slice(this.state.selectedIdx),
           ];
           this.props.setAnswer(newAnswer);
           this.setState((state) => ({
@@ -80,7 +84,7 @@ class SequenceGrid extends React.Component {
       }
 
       // Scroll selected cell into view
-      if (this.state.currentCell && this.state.currentCell.current) {
+      if (this.state.gridRef && this.state.gridRef.current) {
         var targetLeft;
         if (
           this.state.selectedIdx <
@@ -102,7 +106,7 @@ class SequenceGrid extends React.Component {
               (this.state.selectedIdx - constants.SCROLL_OFF);
         }
 
-        this.state.currentCell.current.scrollTo({
+        this.state.gridRef.current.scrollTo({
           left: targetLeft,
           behavior: "smooth",
         });
@@ -112,14 +116,18 @@ class SequenceGrid extends React.Component {
 
   render() {
     return (
-      <div className="sequence-game-grid" ref={this.state.currentCell}>
+      <div className="sequence-game-grid" ref={this.state.gridRef}>
         {this.state.sequence.map((item, idx) => (
           <SequenceCell
             selected={this.state.selectedIdx === idx}
+            idx={idx}
+            onClick={() => {
+              this.setState((state) => ({
+                ...state,
+                selectedIdx: idx,
+              }));
+            }}
             key={idx}
-            // Attach ref only to element
-            // we're scrolling to.
-            // ref={this.state.selectedIdx === idx ? this.state.currentCell : null}
           >
             {item}
           </SequenceCell>

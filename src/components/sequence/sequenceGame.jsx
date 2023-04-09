@@ -35,7 +35,9 @@ class SequenceGame extends React.Component {
         return (
           <>
             <p>Memorize as many digits as possible before the time runs out.</p>
-            <p>Navigate using arrow keys, or A and D.</p>
+            <p>
+              Navigate using arrow keys, A and D, or by scrolling and clicking.
+            </p>
             <div>
               <SequenceGrid sequence={this.state.sequence} />
             </div>
@@ -128,7 +130,6 @@ class SequenceGame extends React.Component {
   }
 
   calculateScore() {
-    console.log(this.state.sequence, this.state.currentAnswer);
     let ret = 0;
     while (
       ret <
