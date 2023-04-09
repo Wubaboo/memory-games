@@ -11,12 +11,9 @@ export const MILLISECONDS_IN_SECOND = 1000;
 export const MIN_TIME_LIMIT = 15;
 export const MAX_DIGITS_PER_SECOND = 3;
 
-// Controls rate limit. 'Keyup' events
-// occuring within KEY_REPEAT ms of the
-// previous are ignored.
-export const KEY_REPEAT = 40;
-
-// How many cells shown to the far right when scrolling.
+export const GRID_MARGIN = 30;
+export const SCROLL_UNIT = 74;
+export const CELLS_IN_GRID = 9;
 export const SCROLL_OFF = 3;
 export const RIGHT_SCROLL = -1;
 export const LEFT_SCROLL = 1;

@@ -80,29 +80,46 @@ class SequenceGrid extends React.Component {
       }
 
       // Scroll selected cell into view
-      if (this.state.currentCell && this.state.currentCell.current)
-        this.state.currentCell.current.scrollIntoView({
+      if (this.state.currentCell && this.state.currentCell.current) {
+        var targetLeft;
+        if (
+          this.state.selectedIdx <
+          constants.CELLS_IN_GRID - constants.SCROLL_OFF
+        ) {
+          targetLeft = 0;
+        } else if (this.state.scrollDir === constants.RIGHT_SCROLL) {
+          targetLeft =
+            constants.GRID_MARGIN +
+            constants.SCROLL_UNIT *
+              (this.state.selectedIdx -
+                constants.CELLS_IN_GRID +
+                constants.SCROLL_OFF +
+                1);
+        } else if (this.state.scrollDir === constants.LEFT_SCROLL) {
+          targetLeft =
+            constants.GRID_MARGIN +
+            constants.SCROLL_UNIT *
+              (this.state.selectedIdx - constants.SCROLL_OFF);
+        }
+
+        this.state.currentCell.current.scrollTo({
+          left: targetLeft,
           behavior: "smooth",
-          block: "nearest",
         });
+      }
     });
   }
 
   render() {
     return (
-      <div className="sequence-game-grid">
+      <div className="sequence-game-grid" ref={this.state.currentCell}>
         {this.state.sequence.map((item, idx) => (
           <SequenceCell
             selected={this.state.selectedIdx === idx}
             key={idx}
             // Attach ref only to element
             // we're scrolling to.
-            ref={
-              this.state.selectedIdx ===
-              idx + this.state.scrollDir * constants.SCROLL_OFF
-                ? this.state.currentCell
-                : null
-            }
+            // ref={this.state.selectedIdx === idx ? this.state.currentCell : null}
           >
             {item}
           </SequenceCell>
