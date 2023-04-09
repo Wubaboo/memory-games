@@ -67,7 +67,7 @@ class SequenceGrid extends React.Component {
             selectedIdx: Math.min(state.selectedIdx + 1, newAnswer.length - 1),
             scrollDir: constants.RIGHT_SCROLL,
           }));
-        } else if (e.keyCode == constants.KEYCODE_BACKSPACE) {
+        } else if (e.keyCode === constants.KEYCODE_BACKSPACE) {
           // Backspace
           const newAnswer = [
             ...this.state.sequence.slice(0, this.state.selectedIdx - 1),

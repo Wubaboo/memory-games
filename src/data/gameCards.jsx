@@ -24,7 +24,7 @@ const cards = [
     label: "Sequences",
     alt: "Sequences Game screenshot",
     caption: "Memorize as many consecutive digits as possible",
-    imagePath: process.env.PUBLIC_URL + "/assets/numbers.png",
+    imagePath: process.env.PUBLIC_URL + "/assets/sequence.png",
     path: "/sequence/",
   },
 ];

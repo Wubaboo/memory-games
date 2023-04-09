@@ -14,8 +14,8 @@ export default function sequenceResult({
     <>
       <div style={{ fontSize: "1.5rem" }}>
         {score > 0
-          ? `You correctly recalled the first {score} digits correctly in{" "}
-        {submissionDuration / constants.MILLISECONDS_IN_SECOND} seconds.`
+          ? `You correctly recalled the first ${score} digits correctly in${" "}
+        ${submissionDuration / constants.MILLISECONDS_IN_SECOND} seconds.`
           : "You failed to remember any of the initial digits correctly. Better luck next time."}
       </div>
       <div
