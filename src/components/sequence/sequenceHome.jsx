@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SequenceGame from "./sequenceGame";
-import SequenceSettings from "./sequenceSettings";
 import GameSettings from "../gameSettings";
+import * as constants from "./sequenceConstants";
 
 import "../../styles/matching.css";
 
-const MIN_TIME_LIMIT = 15;
-const MAX_DIGITS_PER_SECOND = 3;
-
-export default function SeqeunceGameHome() {
-  const [timeLimit, setTimeLimit] = useState(MIN_TIME_LIMIT);
+export default function SequenceGameHome() {
+  const [timeLimit, setTimeLimit] = useState(constants.MIN_TIME_LIMIT);
   const [startGame, setStartGame] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
-  const sequence = Array.from(
-    { length: timeLimit * MAX_DIGITS_PER_SECOND },
-    () => Math.floor(Math.random() * 10)
-  );
+
   function handleStartGame() {
     setStartGame(!startGame);
   }
@@ -34,7 +28,7 @@ export default function SeqeunceGameHome() {
       name: "Time (s)",
       deets: {
         value: timeLimit,
-        min: MIN_TIME_LIMIT,
+        min: constants.MIN_TIME_LIMIT,
         max: 120,
         step: 15,
       },
@@ -48,11 +42,10 @@ export default function SeqeunceGameHome() {
       {startGame ? (
         <SequenceGame
           timeLimit={timeLimit}
-          showTimer={false}
-          onNewGame={() => {
+          showTimer={showTimer}
+          handleNewGame={() => {
             setStartGame(!startGame);
           }}
-          sequence={sequence}
         ></SequenceGame>
       ) : (
         <GameSettings

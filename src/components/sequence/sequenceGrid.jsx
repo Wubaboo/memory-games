@@ -51,24 +51,28 @@ class SequenceGrid extends React.Component {
           e.keyCode <= constants.KEYCODE_NINE
         ) {
           // Numbers
+          const newAnswer = [
+            ...this.state.sequence.slice(0, -1),
+            e.keyCode - constants.KEYCODE_ZERO,
+            this.state.sequence[this.state.sequence.length - 1],
+          ];
+          this.props.setAnswer(newAnswer); // Propagates change up to parent.
           this.setState((state) => ({
             ...state,
-            sequence: [
-              ...this.state.sequence.slice(0, -1),
-              e.keyCode - constants.KEYCODE_ZERO,
-              this.state.sequence[this.state.sequence.length - 1],
-            ],
+            sequence: newAnswer,
             selectedIdx: Math.min(state.selectedIdx + 1, state.sequence.length),
             scrollDir: constants.RIGHT_SCROLL,
           }));
         } else if (e.keyCode == constants.KEYCODE_BACKSPACE) {
           // Backspace
+          const newAnswer = [
+            ...this.state.sequence.slice(0, -2),
+            this.state.sequence[this.state.sequence.length - 1],
+          ];
+          this.props.setAnswer(newAnswer);
           this.setState((state) => ({
             ...state,
-            sequence: [
-              ...this.state.sequence.slice(0, -2),
-              this.state.sequence[this.state.sequence.length - 1],
-            ],
+            sequence: newAnswer,
             selectedIdx: Math.max(state.selectedIdx - 1, 0),
             scrollDir: constants.LEFT_SCROLL,
           }));
@@ -82,10 +86,6 @@ class SequenceGrid extends React.Component {
           block: "nearest",
         });
     });
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
   }
 
   render() {
