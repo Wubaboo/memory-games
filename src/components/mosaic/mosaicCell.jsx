@@ -1,4 +1,3 @@
-import { useState } from "react";
 import COLORS from "../../data/colors";
 export default function MosaicCell({
   selectedColor,

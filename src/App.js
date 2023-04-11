@@ -1,11 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import Numbers from "./components/numbersGame/numbersHome";
 import Home from "./components/home";
 import Matching from "./components/matchingGame/matchingHome";
 import Mosaic from "./components/mosaic/mosaicHome";
 import Sequence from "./components/sequence/sequenceHome";
+import Minefield from "./components/minefield/minefieldHome";
 
 function App() {
   const routes = [
@@ -14,6 +15,7 @@ function App() {
     { label: "Matching", path: "/matching/" },
     { label: "Mosaic", path: "/mosaic/" },
     { label: "Sequence", path: "/sequence/" },
+    { label: "Minefield", path: "/minefield/"}
   ];
   return (
     <div className="App">
@@ -25,6 +27,7 @@ function App() {
           <Route path="/matching/" element={<Matching />} />
           <Route path="/mosaic/" element={<Mosaic />} />
           <Route path="/sequence/" element={<Sequence />} />
+          <Route path="/minefield/" element={<Minefield/>} />
         </Routes>
       </BrowserRouter>
     </div>
