@@ -18,3 +18,4 @@ I have some family members that suffer from Alzheimer's. This is my attempt at c
 - reconstruct the edges between nodes in a graph
 - memorizing a schedule
 - maybe something to do with audio?
+- mario party style - fruits crossing the screen and questions about the counts of fruits asked afterwards
