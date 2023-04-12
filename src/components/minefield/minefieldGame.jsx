@@ -12,7 +12,7 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
 
   // Create the initial grid and populate it with bombs
   useEffect(() => {
-    const maxMines = Math.floor(gridSize / 2);
+    const maxMines = Math.floor(gridSize / 2.5);
     const tempDims = getDimensions(gridSize);
     const [r, c] = tempDims;
     setDims(tempDims);
@@ -29,6 +29,8 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
       [keep, remove] = getCutVertices(adjList);
       iters += 1;
     }
+    setArray[0] = 2;
+    setArray[gridSize - 1] = 3;
     setGrid(setArray);
   }, []);
 
@@ -53,20 +55,39 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     width: "4vw",
     height: "4vw",
   };
+  function renderCellImg(i) {
+    if (i === 1) {
+      return (
+        <img
+          className="cell-image bomb"
+          src={process.env.PUBLIC_URL + "/assets/bomb.svg"}
+          style={bombStyle}
+        ></img>
+      );
+    } else if (i === 2) {
+      return (
+        <img
+          className="cell-image person"
+          src={process.env.PUBLIC_URL + "/assets/person.svg"}
+        ></img>
+      );
+    } else if (i === 3) {
+      return (
+        <img
+          className="cell-image flag"
+          src={process.env.PUBLIC_URL + "/assets/flag.svg"}
+        ></img>
+      );
+    } else {
+      return " ";
+    }
+  }
   return (
     <div>
       <div className="minefield" style={gridStyling}>
         {grid.map((val, i) => (
           <div className="cell" key={i} style={cellStyle}>
-            {val === 0 ? (
-              " "
-            ) : (
-              <img
-                className="bomb"
-                src={process.env.PUBLIC_URL + "/assets/bomb.svg"}
-                style={bombStyle}
-              ></img>
-            )}
+            {renderCellImg(val)}
           </div>
         ))}
       </div>

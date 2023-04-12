@@ -21,7 +21,7 @@ export default function MinefieldHome() {
     {
       type: "slider",
       name: "Grid Size",
-      deets: { value: gridSize, min: 20, max: 200, step: 20 },
+      deets: { value: gridSize, min: 20, max: 320, step: 60 },
       onChange: (e) => setGridSize(e.target.value),
     },
   ];
