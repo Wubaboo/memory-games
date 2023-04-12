@@ -120,12 +120,17 @@ function getCutVertices(graph) {
   }
   parents[0] = 0;
   findArt(0);
-  return [articulation, other]
+  const artic = Array.from(articulation)
+  artic.sort();
+  const oth = Array.from(other);
+  oth.sort();
+  console.log('oth', oth)
+  return [artic.sort((a,b) => (a-b) ), oth.sort((a,b) => (a-b))]
 }
 
 // remove node from the adjacency list graph
 function removeNode(graph, node) {
-  for (let neigh of graph[node]) {
+  for (let neigh of Array.from(graph[node])) {
     graph[neigh].delete(node)
   }
   delete graph[node]

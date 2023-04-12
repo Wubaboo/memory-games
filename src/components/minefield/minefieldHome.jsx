@@ -21,7 +21,7 @@ export default function MinefieldHome() {
     {
       type: "slider",
       name: "Grid Size",
-      deets: { value: gridSize, min: 16, max: 40, step: 4 },
+      deets: { value: gridSize, min: 20, max: 200, step: 20 },
       onChange: (e) => setGridSize(e.target.value),
     },
   ];
@@ -29,15 +29,14 @@ export default function MinefieldHome() {
   return (
     <div className="minefield-container">
       <h1 style={{ margin: "1em 0em" }}>Minefield</h1>
-      {!startGame && (
+      {!startGame ? (
         <GameSettings
           objs={settings}
           handleStart={handleStartGame}
           showTimer={showTimer}
           setShowTimer={setShowTimer}
         ></GameSettings>
-      )}
-      {startGame && (
+      ) : (
         <MineFieldGame
           gridSize={gridSize}
           setStartGame={setStartGame}
