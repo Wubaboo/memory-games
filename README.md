@@ -2,6 +2,8 @@
 
 I have some family members that suffer from Alzheimer's. This is my attempt at combatting it.
 
+Try them [here](https://wubaboo.github.io/memory-games)
+
 ## Games
 
 - Remembering numbers in increasing order
