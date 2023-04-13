@@ -157,7 +157,7 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
         focus="true"
       >
         {grid.map((val, i) => (
-          <div className="cell" key={i} style={getCellStyle(val)}>
+          <div className="minefield-cell" key={i} style={getCellStyle(val)}>
             {renderCellImg(val)}
           </div>
         ))}
