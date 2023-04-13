@@ -145,7 +145,10 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     setPos(newPos);
   }
   return (
-    <div>
+    <>
+      <p style={{ margin: "1em" }}>
+        Move the person with W,A,S,D or the arrow keys
+      </p>
       <div
         id="minefield"
         className="minefield"
@@ -179,6 +182,6 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
           New Game
         </button>
       )}
-    </div>
+    </>
   );
 }
