@@ -19,6 +19,7 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
   const [pos, setPos] = useState([0, 0]);
   const [playing, setPlaying] = useState(false);
   const [win, setWin] = useState(undefined);
+  const [firstMove, setFirstMove] = useState(false);
   const { width, height } = useWindowDimensions();
 
   // Create the initial grid and populate it with bombs
@@ -63,7 +64,8 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
       maxHeight: "4.2em",
       width: `${80 / dims[1]}vw`,
       height: `${80 / dims[1]}vw`,
-      transition: "border 1s",
+      transition:
+        "border 1s" + (!playing || firstMove ? ", background 0.5s" : ""),
     };
     if (playing && val !== 2 && val !== 3) {
       cellStyle.backgroundColor = "black";
@@ -114,6 +116,8 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
   function handleKeyDown(e) {
     if (win !== undefined) return;
     const clicked = e.key;
+    if (!playing) setFirstMove(true);
+    if (firstMove) setFirstMove(false);
     setPlaying(true);
     let newPos = [pos[0], pos[1]];
     if (clicked === "ArrowRight" || clicked === "d") {
