@@ -27,6 +27,13 @@ const cards = [
     imagePath: process.env.PUBLIC_URL + "/assets/sequence.png",
     path: "/sequence/",
   },
+  {
+    label: "Minefield",
+    alt: "Minefield Game screenshot",
+    caption: "Memorize the path to the goal",
+    imagePath: process.env.PUBLIC_URL + "/assets/minefield.png",
+    path: "/minefield/",
+  },
 ];
 
 export default cards;

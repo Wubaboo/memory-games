@@ -1,4 +1,5 @@
 import { elementAcceptingRef } from "@mui/utils";
+import Timer from "../timer";
 import { useEffect, useState, useRef } from "react";
 import {
   createGrid,
@@ -54,27 +55,48 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     // maxWidth: "80vw",
     // maxHeight: "80vh",
   };
-  const cellStyle = {
-    position: "relative",
-    border: "1px solid black",
-    maxWidth: "4.2em",
-    maxHeight: "4.2em",
-    width: `${80 / dims[1]}vw`,
-    height: `${80 / dims[1]}vw`,
-  };
+  function getCellStyle(val) {
+    const cellStyle = {
+      position: "relative",
+      border: "1px solid black",
+      maxWidth: "4.2em",
+      maxHeight: "4.2em",
+      width: `${80 / dims[1]}vw`,
+      height: `${80 / dims[1]}vw`,
+      transition: "border 1s",
+    };
+    if (playing && val !== 2 && val !== 3) {
+      cellStyle.backgroundColor = "black";
+    }
+    if (win === true) {
+      cellStyle.border = "1px solid rgb(174, 255, 174)";
+    } else if (win === false) {
+      cellStyle.border = "1px solid red";
+    }
+    return cellStyle;
+  }
 
   const states = {
     0: { name: "empty", img: null, classes: "" },
-    1: { name: "bomb", img: process.env.PUBLIC_URL + "/assets/bomb.svg" },
-    2: { name: "person", img: process.env.PUBLIC_URL + "/assets/person.svg" },
-    3: { name: "flag", img: process.env.PUBLIC_URL + "/assets/flag.svg" },
+    1: {
+      name: "bomb",
+      img: process.env.PUBLIC_URL + "/assets/minefieldImages/bomb.svg",
+    },
+    2: {
+      name: "person",
+      img: process.env.PUBLIC_URL + "/assets/minefieldImages/person.svg",
+    },
+    3: {
+      name: "flag",
+      img: process.env.PUBLIC_URL + "/assets/minefieldImages/flag.svg",
+    },
     4: {
       name: "win",
-      img: process.env.PUBLIC_URL + "/assets/minefieldWin.svg",
+      img: process.env.PUBLIC_URL + "/assets/minefieldImages/minefieldWin.svg",
     },
     5: {
       name: "lose",
-      img: process.env.PUBLIC_URL + "/assets/minefieldLose.svg",
+      img: process.env.PUBLIC_URL + "/assets/minefieldImages/minefieldLose.svg",
     },
   };
   function renderCellImg(i) {
@@ -122,7 +144,6 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     setGrid(newGrid);
     setPos(newPos);
   }
-  console.log(grid);
   return (
     <div>
       <div
@@ -136,10 +157,18 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
         focus="true"
       >
         {grid.map((val, i) => (
-          <div className="cell" key={i} style={cellStyle}>
+          <div className="cell" key={i} style={getCellStyle(val)}>
             {renderCellImg(val)}
           </div>
         ))}
+      </div>
+      <div className="minefield-info">
+        <Timer paused={win !== undefined} visible={showTimer}></Timer>
+        {win === true ? (
+          <h2>Nice job!</h2>
+        ) : win === false ? (
+          <h2>Good try</h2>
+        ) : null}
       </div>
       {win === undefined ? null : (
         <button
