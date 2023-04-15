@@ -24,9 +24,11 @@
 }
 
 .arrow-keys {
-  min-width: 9em;
-  max-width: 15vw;
-  height: auto;
+  width: 64vw;
+  max-width: 24em;
+  /* max-width: 15vw; */
+  height: 32vw;
+  max-height: 20em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);

@@ -184,7 +184,7 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
           <h2>Good try</h2>
         ) : null}
       </div>
-      {win === undefined && (
+      {win === undefined && width < height && (
         <div className="arrow-keys">
           <button
             className="arrow-left"
