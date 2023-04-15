@@ -113,6 +113,13 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
       return " ";
     }
   }
+
+  function handleButtonClick(direction) {
+    const res = {};
+    res.key = direction;
+    handleKeyDown(res);
+  }
+
   function handleKeyDown(e) {
     if (win !== undefined) return;
     const clicked = e.key;
@@ -177,6 +184,42 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
           <h2>Good try</h2>
         ) : null}
       </div>
+      {win === undefined && (
+        <div className="arrow-keys">
+          <button
+            className="arrow-left"
+            onClick={() => {
+              handleButtonClick("a");
+            }}
+          >
+            &larr;
+          </button>
+          <button
+            className="arrow-up"
+            onClick={() => {
+              handleButtonClick("w");
+            }}
+          >
+            &uarr;
+          </button>
+          <button
+            className="arrow-down"
+            onClick={() => {
+              handleButtonClick("s");
+            }}
+          >
+            &darr;
+          </button>
+          <button
+            className="arrow-right"
+            onClick={() => {
+              handleButtonClick("d");
+            }}
+          >
+            &rarr;
+          </button>
+        </div>
+      )}
       {win === undefined ? null : (
         <button
           onClick={() => {

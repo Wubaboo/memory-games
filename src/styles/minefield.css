@@ -22,3 +22,35 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+.arrow-keys {
+  min-width: 9em;
+  max-width: 15vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  gap: 0px 0px;
+}
+
+.arrow-keys > * {
+  margin: 0px;
+  padding: 0.5em;
+}
+.arrow-left {
+  grid-area: left;
+}
+
+.arrow-right {
+  grid-area: right;
+}
+.arrow-up {
+  grid-area: up;
+}
+.arrow-down {
+  grid-area: down;
+}
