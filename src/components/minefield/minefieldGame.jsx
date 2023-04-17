@@ -53,8 +53,6 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     gridTemplateColumns: `repeat(${dims[1]}, 1fr)`,
     display: "grid",
     gridGap: "0px",
-    // maxWidth: "80vw",
-    // maxHeight: "80vh",
   };
   function getCellStyle(val) {
     const cellStyle = {
