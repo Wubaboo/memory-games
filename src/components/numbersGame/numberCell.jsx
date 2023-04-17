@@ -52,7 +52,7 @@ export default function NumberCell(props) {
     width: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
     height: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
   };
-  console.log(gridSize);
+
   return (
     <div className={classes.join(" ")} onClick={handleClick} style={cellStyle}>
       {value ? value : null}
