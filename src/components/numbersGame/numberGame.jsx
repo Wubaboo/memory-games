@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NumberCell from "./numberCell";
-
+import { useWindowDimensions } from "../../utils/useWindowDimensions";
 import Timer from "../timer";
 
 export default function NumberGame(props) {
@@ -8,12 +8,13 @@ export default function NumberGame(props) {
   const [playing, setPlaying] = useState(false);
   const [win, setWin] = useState(undefined);
   const { gridSize, grid, difficulty, setStartGame, showTimer } = props;
+  const { width, height } = useWindowDimensions();
 
   const gameStyling = {
     gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
     display: "grid",
-    gridGap: "calc(min(2vw, 2rem))",
-    width: "90%",
+    gridGap: `${10 / gridSize}${width <= height ? "vw" : "vh"}`,
+    width: "100%",
   };
 
   function handleNewGame() {
@@ -38,6 +39,7 @@ export default function NumberGame(props) {
               win={win}
               setWin={setWin}
               difficulty={difficulty}
+              gridSize={gridSize}
             ></NumberCell>
           ));
         })}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useWindowDimensions } from "../../utils/useWindowDimensions";
 
 export default function NumberCell(props) {
   const {
@@ -10,9 +11,10 @@ export default function NumberCell(props) {
     win,
     setWin,
     difficulty,
+    gridSize,
   } = props;
   const [classes, setClasses] = useState(["grid-cell", "hidden"]);
-
+  const { width, height } = useWindowDimensions();
   useEffect(() => {
     let classes = ["grid-cell"];
     if (win) {
@@ -46,8 +48,13 @@ export default function NumberCell(props) {
     }
   }
 
+  const cellStyle = {
+    width: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
+    height: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
+  };
+  console.log(gridSize);
   return (
-    <div className={classes.join(" ")} onClick={handleClick}>
+    <div className={classes.join(" ")} onClick={handleClick} style={cellStyle}>
       {value ? value : null}
     </div>
   );
