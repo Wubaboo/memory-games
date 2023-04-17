@@ -16,6 +16,7 @@ class SequenceGrid extends React.Component {
       scrollDir: constants.RIGHT_SCROLL,
       gridRef: React.createRef(),
     };
+    this.keyActions = this.keyActions.bind(this);
   }
 
   keyActions(e) {

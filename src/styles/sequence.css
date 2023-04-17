@@ -3,6 +3,7 @@
   margin: 30pt;
   padding: 20pt;
   width: 650px;
+  max-width: 60vw;
   overflow-x: scroll;
 }
 
@@ -11,12 +12,9 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
-/* .sequence-non-num-input {
-  width: 650px;
-} */
 @media (max-width: 750px) {
   .sequence-game-grid {
-    width: 100%;
-    min-width: 300px;
+    width: 70vw;
+    max-width: 70vw;
   }
 }
