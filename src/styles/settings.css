@@ -5,7 +5,14 @@
   gap: 5em;
   width: 100%;
 }
-
+.radio-group-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  gap: 5em;
+  width: 100%;
+}
 .settings {
   display: flex;
   flex-direction: column;
@@ -21,5 +28,9 @@
   .slider-row {
     flex-direction: column;
     gap: 0em;
+  }
+  .radio-group-row {
+    flex-direction: column;
+    gap: 1em;
   }
 }
