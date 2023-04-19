@@ -10,6 +10,7 @@
   position: relative;
   width: 20vw;
   max-width: 12em;
+  /* min-width: 4em; */
 }
 
 @keyframes move-customer {
@@ -118,4 +119,6 @@
   display: flex;
   gap: 1em;
   margin-top: 5em;
+  flex-wrap: "wrap";
+  width: 90vw;
 }
