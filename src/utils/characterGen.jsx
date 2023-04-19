@@ -37,7 +37,6 @@ const artStyles = [
 
 function getAvatar(style, seed, options) {
   const baseURI = `https://api.dicebear.com/6.x/${style}/svg?seed=${seed}`;
-  console.log(baseURI + "&" + options.join("&"));
   return baseURI + "&" + options.join("&");
 }
 
