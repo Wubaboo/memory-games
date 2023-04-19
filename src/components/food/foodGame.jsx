@@ -3,6 +3,7 @@ import Timer from "../timer";
 import FoodCustomer from "./foodCustomer";
 import { foods } from "../../data/foods";
 import FoodGuess from "./foodGuess";
+import FoodResult from "./foodResult";
 import { getAvatar } from "../../utils/characterGen";
 
 export default function FoodGame({
@@ -57,44 +58,46 @@ export default function FoodGame({
   }
   return (
     <div className="food-game">
-      {currentCustomer < customers.length ? (
-        <FoodCustomer
-          seed={customers[currentCustomer]}
-          state={customerStates[currentCustomer]}
-          artDetails={artDetails}
-          order={orders[currentCustomer]}
-          getAvatarState={getAvatarState}
-        />
-      ) : (
-        <FoodGuess
-          customers={customers}
-          orders={orders}
-          getAvatarState={getAvatarState}
-          customerStates={customerStates}
-          setCustomerStates={setCustomerStates}
-          setMistakes={setMistakes}
-          setWin={setWin}
-          maxFood={maxFood}
-        ></FoodGuess>
-      )}
+      {win === undefined &&
+        (currentCustomer < customers.length ? (
+          <>
+            <FoodCustomer
+              seed={customers[currentCustomer]}
+              state={customerStates[currentCustomer]}
+              artDetails={artDetails}
+              order={orders[currentCustomer]}
+              getAvatarState={getAvatarState}
+              renderCustomerButton={renderCustomerButton}
+              currentCustomer={currentCustomer}
+            />
+          </>
+        ) : (
+          <FoodGuess
+            customers={customers}
+            orders={orders}
+            getAvatarState={getAvatarState}
+            customerStates={customerStates}
+            setCustomerStates={setCustomerStates}
+            setMistakes={setMistakes}
+            setWin={setWin}
+            maxFood={maxFood}
+          ></FoodGuess>
+        ))}
 
-      {renderCustomerButton(currentCustomer)}
       <div className="food-info">
         <Timer paused={win !== undefined} visible={showTimer}></Timer>
-        {win === true ? (
-          <h2>Nice job!</h2>
-        ) : win === false ? (
-          <h2>Good try</h2>
-        ) : null}
       </div>
       {win === undefined ? null : (
-        <button
-          onClick={() => {
-            setStartGame(false);
-          }}
-        >
-          New Game
-        </button>
+        <FoodResult
+          customers={customers}
+          customerStates={customerStates}
+          orders={orders}
+          mistakes={mistakes}
+          getAvatarState={getAvatarState}
+          setStartGame={setStartGame}
+          setWin={setWin}
+          setCurrentCustomer={setCurrentCustomer}
+        ></FoodResult>
       )}
     </div>
   );

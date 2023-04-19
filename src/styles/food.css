@@ -9,7 +9,7 @@
 .food-customer {
   position: relative;
   width: 20vw;
-  max-width: 16em;
+  max-width: 12em;
 }
 
 @keyframes move-customer {
@@ -112,4 +112,10 @@
   flex-direction: column;
   gap: 1em;
   align-items: center;
+}
+
+.food-customer-results {
+  display: flex;
+  gap: 1em;
+  margin-top: 5em;
 }

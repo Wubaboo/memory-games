@@ -1,5 +1,5 @@
 import { shuffleArray } from "../../utils/gridUtils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { foods } from "../../data/foods";
 import "../../styles/food.css";
 export default function FoodGuess({
@@ -10,6 +10,7 @@ export default function FoodGuess({
   setMistakes,
   getAvatarState,
   maxFood,
+  setWin,
 }) {
   const [customerLineup, setCustomerLineup] = useState(
     shuffleArray([...Array(customers.length).keys()])
@@ -46,6 +47,7 @@ export default function FoodGuess({
     });
   }
   function handleSubmit() {
+    let bad = false;
     const counter = {};
     for (let item of orders[customerLineup[currentCustomer]]) {
       if (!counter.hasOwnProperty(item.name)) counter[item.name] = 1;
@@ -54,24 +56,43 @@ export default function FoodGuess({
     for (let item of selectedItems) {
       if (!counter.hasOwnProperty(item.name)) {
         makeAngry();
-        return;
+        bad = true;
+        break;
       } else {
         counter[item.name] -= 1;
         if (counter[item.name] < 0) {
           makeAngry();
-          return;
+          bad = true;
+          break;
         }
       }
     }
     for (let key of Object.keys(counter)) {
       if (counter[key] !== 0) {
-        makeAngry();
-        return;
+        bad = true;
+        break;
       }
     }
-    makeHappy();
+    if (!bad) makeHappy();
+    else {
+      makeAngry();
+      setMistakes((prev) => prev + 1);
+    }
+    async function sleep(time) {
+      await new Promise((r) => setTimeout(r, time));
+      setCurrentCustomer((prev) => prev + 1);
+      setSelectedItems([]);
+      setShowOrder(false);
+    }
+    sleep(1500);
     return;
   }
+  useEffect(() => {
+    console.log("current", currentCustomer);
+    if (customerLineup.length !== 0 && currentCustomer >= customerLineup.length)
+      setWin(true);
+  }, [currentCustomer]);
+
   return (
     <div className="food-customer-lineup">
       <div className="food-customer">
