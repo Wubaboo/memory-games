@@ -18,8 +18,7 @@ export default function FoodGuess({
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState(0);
   const [showOrder, setShowOrder] = useState(false);
-
-  function check(customerIndex, input) {}
+  const [wait, setWait] = useState(false);
 
   function handleAddItem(item) {
     if (selectedItems.length < maxFood)
@@ -47,6 +46,8 @@ export default function FoodGuess({
     });
   }
   function handleSubmit() {
+    if (selectedItems.length === 0 || wait) return;
+
     let bad = false;
     const counter = {};
     for (let item of orders[customerLineup[currentCustomer]]) {
@@ -83,7 +84,9 @@ export default function FoodGuess({
       setCurrentCustomer((prev) => prev + 1);
       setSelectedItems([]);
       setShowOrder(false);
+      setWait(false);
     }
+    setWait(true);
     sleep(1500);
     return;
   }
