@@ -5,6 +5,7 @@ import "../../styles/food.css";
 export default function FoodGuess({
   customers,
   orders,
+  customerStates,
   setCustomerStates,
   setMistakes,
   getAvatarState,
@@ -15,6 +16,7 @@ export default function FoodGuess({
   );
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState(0);
+  const [showOrder, setShowOrder] = useState(false);
 
   function check(customerIndex, input) {}
 
@@ -27,16 +29,67 @@ export default function FoodGuess({
     newItems.splice(i, 1);
     setSelectedItems(newItems);
   }
+
+  function makeHappy() {
+    setCustomerStates((prev) => {
+      const ret = [...prev];
+      ret[customerLineup[currentCustomer]] = "happy";
+      return ret;
+    });
+  }
+  function makeAngry() {
+    setCustomerStates((prev) => {
+      const ret = [...prev];
+      ret[customerLineup[currentCustomer]] = "angry";
+      setShowOrder(true);
+      return ret;
+    });
+  }
+  function handleSubmit() {
+    const counter = {};
+    for (let item of orders[customerLineup[currentCustomer]]) {
+      if (!counter.hasOwnProperty(item.name)) counter[item.name] = 1;
+      else counter[item.name] += 1;
+    }
+    for (let item of selectedItems) {
+      if (!counter.hasOwnProperty(item.name)) {
+        makeAngry();
+        return;
+      } else {
+        counter[item.name] -= 1;
+        if (counter[item.name] < 0) {
+          makeAngry();
+          return;
+        }
+      }
+    }
+    for (let key of Object.keys(counter)) {
+      if (counter[key] !== 0) {
+        makeAngry();
+        return;
+      }
+    }
+    makeHappy();
+    return;
+  }
   return (
     <div className="food-customer-lineup">
-      <img
-        className="food-customer"
-        src={getAvatarState(
-          customers[customerLineup[currentCustomer]],
-          "neutral"
+      <div className="food-customer">
+        <img
+          src={getAvatarState(
+            customers[customerLineup[currentCustomer]],
+            customerStates[customerLineup[currentCustomer]]
+          )}
+          alt="Customer being served"
+        ></img>
+        {showOrder && (
+          <div className="food-order">
+            {orders[customerLineup[currentCustomer]].map((o, i) => (
+              <img key={i} src={o.imagePath} alt={o.name}></img>
+            ))}
+          </div>
         )}
-        alt="Customer being served"
-      ></img>
+      </div>
       <div className="food-submit-row">
         <div className="food-selected-items">
           {selectedItems.map((f, i) => (
@@ -53,7 +106,9 @@ export default function FoodGuess({
             </div>
           ))}
         </div>
-        <div className="food-submit-button">✓</div>
+        <div className="food-submit-button" onClick={handleSubmit}>
+          ✓
+        </div>
       </div>
       <div className="food-food-buttons">
         {foods.map((f, i) => (

@@ -70,6 +70,7 @@ export default function FoodGame({
           customers={customers}
           orders={orders}
           getAvatarState={getAvatarState}
+          customerStates={customerStates}
           setCustomerStates={setCustomerStates}
           setMistakes={setMistakes}
           setWin={setWin}
