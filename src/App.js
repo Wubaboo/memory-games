@@ -7,6 +7,7 @@ import Matching from "./components/matchingGame/matchingHome";
 import Mosaic from "./components/mosaic/mosaicHome";
 import Sequence from "./components/sequence/sequenceHome";
 import Minefield from "./components/minefield/minefieldHome";
+import Food from "./components/food/foodHome";
 
 function App() {
   const routes = [
@@ -15,7 +16,8 @@ function App() {
     { label: "Matching", path: "/matching/" },
     { label: "Mosaic", path: "/mosaic/" },
     { label: "Sequence", path: "/sequence/" },
-    { label: "Minefield", path: "/minefield/"}
+    { label: "Minefield", path: "/minefield/" },
+    { label: "Food", path: "/food/" },
   ];
   return (
     <div className="App">
@@ -27,7 +29,8 @@ function App() {
           <Route path="/matching/" element={<Matching />} />
           <Route path="/mosaic/" element={<Mosaic />} />
           <Route path="/sequence/" element={<Sequence />} />
-          <Route path="/minefield/" element={<Minefield/>} />
+          <Route path="/minefield/" element={<Minefield />} />
+          <Route path="/food/" element={<Food />} />
         </Routes>
       </BrowserRouter>
     </div>

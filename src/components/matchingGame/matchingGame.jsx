@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import MatchingCell from "./matchingCell";
-import Timer from "../timer"
+import Timer from "../timer";
 import {
   shuffleArray,
   getDimensions,
   getRandomColor,
 } from "../../utils/gridUtils";
-import {useWindowDimensions, MOBILE_WIDTH} from "../../utils/useWindowDimensions"
+import {
+  useWindowDimensions,
+  MOBILE_WIDTH,
+} from "../../utils/useWindowDimensions";
 
 import ICONS from "../../data/icons";
 export default function MatchingGame(props) {
@@ -20,7 +23,7 @@ export default function MatchingGame(props) {
   const [dims, setDims] = useState(getDimensions(gridSize));
   const [mistakes, setMistakes] = useState(0);
   const [wait, setWait] = useState(false);
-  const {width, height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const gridStyling = {
     gridTemplateColumns: `repeat(${dims[1]}, 1fr)`,
     display: "grid",
@@ -75,14 +78,13 @@ export default function MatchingGame(props) {
 
   useEffect(() => {
     if (width <= MOBILE_WIDTH) {
-      const newDims = [Math.floor(gridSize/4), 4]
-      setDims(newDims)
-    }
-    else {
+      const newDims = [Math.floor(gridSize / 4), 4];
+      setDims(newDims);
+    } else {
       const newDims = getDimensions(gridSize);
-      setDims(newDims)
+      setDims(newDims);
     }
-  }, [width])
+  }, [width]);
   // go back to the settings page
   function handleNewGame() {
     setStartGame(false);
@@ -162,11 +164,13 @@ export default function MatchingGame(props) {
       <Timer paused={win} visible={showTimer}></Timer>
       {win !== undefined ? (
         <>
-        <div style={{fontSize: '1.5rem'}}>{mistakes > 0 ? `Mistakes: ${mistakes}` : "A Perfect Game!"}</div>
+          <div style={{ fontSize: "1.5rem" }}>
+            {mistakes > 0 ? `Mistakes: ${mistakes}` : "A Perfect Game!"}
+          </div>
 
-        <button className="new-game-button" onClick={handleNewGame}>
-          New Game
-        </button>
+          <button className="new-game-button" onClick={handleNewGame}>
+            New Game
+          </button>
         </>
       ) : null}
     </div>
