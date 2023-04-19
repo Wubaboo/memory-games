@@ -34,6 +34,13 @@ const cards = [
     imagePath: process.env.PUBLIC_URL + "/assets/minefield.png",
     path: "/minefield/",
   },
+  {
+    label: "Food",
+    alt: "Food Game screenshot",
+    caption: "Memorize the customers' orders",
+    imagePath: process.env.PUBLIC_URL + "/assets/food.png",
+    path: "/food/",
+  },
 ];
 
 export default cards;
