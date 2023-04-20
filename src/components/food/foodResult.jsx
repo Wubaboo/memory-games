@@ -36,15 +36,6 @@ export default function FoodResult({
               customers.length - mistakes === 1 ? "" : "s"
             } correct.`}
       </p>
-      <button
-        onClick={() => {
-          setStartGame(false);
-          setWin(undefined);
-          setCurrentCustomer(0);
-        }}
-      >
-        New Game
-      </button>
     </div>
   );
 }

@@ -84,9 +84,6 @@ export default function FoodGame({
           ></FoodGuess>
         ))}
 
-      <div className="food-info">
-        <Timer paused={win !== undefined} visible={showTimer}></Timer>
-      </div>
       {win === undefined ? null : (
         <FoodResult
           customers={customers}
@@ -99,6 +96,18 @@ export default function FoodGame({
           setCurrentCustomer={setCurrentCustomer}
         ></FoodResult>
       )}
+      <Timer paused={win !== undefined} visible={showTimer}></Timer>
+      {win !== undefined ? (
+        <button
+          onClick={() => {
+            setStartGame(false);
+            setWin(undefined);
+            setCurrentCustomer(0);
+          }}
+        >
+          New Game
+        </button>
+      ) : null}
     </div>
   );
 }

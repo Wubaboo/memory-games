@@ -10,7 +10,7 @@
   position: relative;
   width: 20vw;
   max-width: 12em;
-  /* min-width: 4em; */
+  min-width: 6em;
 }
 
 @keyframes move-customer {
@@ -26,6 +26,7 @@
 @keyframes fade-customer {
   from {
     opacity: 100;
+    transform: translate(0);
   }
   to {
     opacity: 0;
@@ -118,7 +119,17 @@
 .food-customer-results {
   display: flex;
   gap: 1em;
-  margin-top: 5em;
-  flex-wrap: "wrap";
-  width: 90vw;
+  margin-top: 1em;
+  flex-wrap: wrap;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2em;
+}
+
+.food-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
