@@ -11,6 +11,7 @@ Try them [here](https://wubaboo.github.io/memory-games)
 - Recreating a mosaic
 - Memorize a sequence of numbers
 - Navigate a minefield
+- memorizing customer's food orders
 
 ## other ideas
 
@@ -21,4 +22,3 @@ Try them [here](https://wubaboo.github.io/memory-games)
 - memorizing a schedule
 - maybe something to do with audio?
 - mario party style - fruits crossing the screen and questions about the counts of fruits asked afterwards
-- memorizing customer's food orders
