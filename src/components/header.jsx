@@ -15,7 +15,7 @@ export default function Header(props) {
   }
   return (
     <div className="header">
-      <Link to="/memory-games/">
+      <Link to="/">
         <h1 className="label">Memory Games</h1>
       </Link>
       <i className="fa-bars fa-solid fa-xl menu-icon" onClick={handleClick}></i>
