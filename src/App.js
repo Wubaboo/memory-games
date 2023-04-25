@@ -8,6 +8,7 @@ import Mosaic from "./components/mosaic/mosaicHome";
 import Sequence from "./components/sequence/sequenceHome";
 import Minefield from "./components/minefield/minefieldHome";
 import Food from "./components/food/foodHome";
+import Sets from "./components/sets/setsHome";
 
 function App() {
   const routes = [
@@ -18,6 +19,7 @@ function App() {
     { label: "Sequence", path: "/sequence/", el: <Sequence /> },
     { label: "Minefield", path: "/minefield/", el: <Minefield /> },
     { label: "Food", path: "/food/", el: <Food /> },
+    { label: "Sets", path: "/sets/", el: <Sets /> },
   ];
   return (
     <div className="App">

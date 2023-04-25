@@ -1,6 +1,5 @@
-import { elementAcceptingRef } from "@mui/utils";
 import Timer from "../timer";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   createGrid,
   getCutVertices,
