@@ -26,8 +26,9 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
   useEffect(() => {
     const maxMines = Math.floor(gridSize / 2.5);
     const tempDims = getDimensions(gridSize);
-    const newDims =
-      width <= MOBILE_WIDTH ? tempDims.sort((a, b) => b - a) : tempDims;
+    const newDims = tempDims;
+    // const newDims =
+    //   width <= MOBILE_WIDTH ? tempDims.sort((a, b) => b - a) : tempDims;
     const [r, c] = newDims;
     setDims(newDims);
     const setArray = Array.from({ length: gridSize }, () => 0);
@@ -54,14 +55,19 @@ export default function MinefieldGame({ gridSize, setStartGame, showTimer }) {
     display: "grid",
     gridGap: "0px",
   };
+  console.log(dims);
   function getCellStyle(val) {
     const cellStyle = {
       position: "relative",
       border: "1px solid black",
-      maxWidth: "4.2em",
-      maxHeight: "4.2em",
-      width: `${80 / dims[1]}vw`,
-      height: `${80 / dims[1]}vw`,
+      maxWidth: "5rem",
+      maxHeight: "5rem",
+      minWidth: "1rem",
+      minHeight: "1rem",
+      // width: `${100 / dims[1]}%`,
+      aspectRatio: "1 / 1",
+      width: width <= height ? `${90 / dims[1]}vw` : `${80 / dims[1]}vh`,
+      height: width <= height ? `${90 / dims[1]}vw` : `${80 / dims[1]}vh`,
       transition:
         "border 1s" + (!playing || firstMove ? ", background 0.5s" : ""),
     };

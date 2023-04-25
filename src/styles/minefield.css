@@ -37,6 +37,7 @@
     "left . right"
     ". down .";
   gap: 0px 0px;
+  margin: 1rem;
 }
 
 .arrow-keys > * {
