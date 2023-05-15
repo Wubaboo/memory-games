@@ -1,11 +1,4 @@
-import {
-  Slider,
-  RadioGroup,
-  Radio,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-} from "@mui/material";
+import { Slider, RadioGroup, Radio, FormControlLabel } from "@mui/material";
 import { getSliderMarks } from "../utils/settingsUtils";
 import CheckBoxForm from "./checkboxForm";
 import "../styles/settings.css";
@@ -30,7 +23,12 @@ export default function GameSettings({
             value={deets.value}
             min={deets.min}
             max={deets.max}
-            marks={getSliderMarks(deets.min, deets.max, deets.step)}
+            marks={getSliderMarks(
+              deets.min,
+              deets.max,
+              deets.step,
+              deets.labelStep
+            )}
             step={null}
             valueLabelDisplay="auto"
             onChange={onChange}

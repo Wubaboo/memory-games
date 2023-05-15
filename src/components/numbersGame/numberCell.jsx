@@ -28,7 +28,7 @@ export default function NumberCell(props) {
   }, [playing, win, value]);
 
   function handleClick() {
-    if (win !== undefined) {
+    if (win !== undefined || (value > 0 && value < nextValue)) {
       return;
     }
     if (classes.includes("hidden")) {
@@ -51,6 +51,8 @@ export default function NumberCell(props) {
   const cellStyle = {
     width: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
     height: `${70 / gridSize}${width <= height ? "vw" : "vh"}`,
+    maxWidth: "150px",
+    maxHeight: "150px",
   };
 
   return (

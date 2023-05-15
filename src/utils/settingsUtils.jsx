@@ -1,7 +1,15 @@
-function getSliderMarks(min, max, step = 1) {
+function getSliderMarks(min, max, step = 1, labelStep = null) {
   let marks = [];
   for (let i = min; i <= max; i += step) {
-    marks.push({ value: i, label: i });
+    if (labelStep) {
+      if (i % labelStep === 0) {
+        marks.push({ value: i, label: null });
+      } else {
+        marks.push({ value: i, label: i });
+      }
+    } else {
+      marks.push({ value: i, label: i });
+    }
   }
   return marks;
 }
