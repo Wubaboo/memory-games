@@ -29,12 +29,6 @@ export default function FoodHome() {
       onChange: (e) => setCustomerCount(e.target.value),
     },
     {
-      type: "slider",
-      name: "Maximum Items Per Customer",
-      deets: { value: maxFood, min: 2, max: 4, step: 1 },
-      onChange: (e) => setMaxFood(e.target.value),
-    },
-    {
       type: "options",
       name: "Art Style",
       deets: {
