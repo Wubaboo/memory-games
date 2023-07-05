@@ -65,9 +65,9 @@ export default function NumberGameHome() {
       deets: {
         value: difficulty,
         min: 3,
-        max: Math.min(gridSize * gridSize, 25),
+        max: Math.min(gridSize * gridSize, 99),
         step: 1,
-        labelStep: width <= MOBILE_WIDTH ? 2 : null,
+        labelStep: gridSize > 5 ? 5 : width <= MOBILE_WIDTH ? 2 : null,
       },
       onChange: (e) => setDifficulty(e.target.value),
     },
