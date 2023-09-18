@@ -2,7 +2,8 @@
 
 I have some family members who suffer from Alzheimer's. This is my attempt at combatting it.
 
-Try them [here](https://wubaboo.github.io/memory-games)
+Try them [here](https://wubaboo.github.io/memory-games).
+I've also released a [mobile version in the Google Play Store](https://play.google.com/store/apps/details?id=com.wubaboo.memoryapp).
 
 ## Games
 
